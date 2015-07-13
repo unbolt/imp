@@ -7,7 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-	"zizaco/entrust": "dev-laravel-5"
+	"zizaco/entrust": "dev-laravel-5",
+	"viion/xivpads-lodestoneapi": "dev-master"
 
     },
     "require-dev": {

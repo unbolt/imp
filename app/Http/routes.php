@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* DEVELOPMENT ROUTES */
+// Testing stuff, delete when done
+Route::get('character', 'CharacterController@testCharacter');
+
+
 /* LOGIN / LOGOUT / REGISTRATION ROUTES  */
 
 // Authentication routes

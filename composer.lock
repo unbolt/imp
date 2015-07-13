@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "588a753141613a9e7f729f3d2a2ba911",
+    "hash": "93db946a2b82ac0d4ad3b455a5c8df85",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1649,6 +1649,53 @@
             "time": "2015-06-08 09:37:21"
         },
         {
+            "name": "viion/xivpads-lodestoneapi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/viion/XIVPads-LodestoneAPI.git",
+                "reference": "9162db98e894d455a4564ac245da08fbac0843a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/viion/XIVPads-LodestoneAPI/zipball/9162db98e894d455a4564ac245da08fbac0843a6",
+                "reference": "9162db98e894d455a4564ac245da08fbac0843a6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Viion\\Lodestone\\": "src/",
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Freeman",
+                    "email": "josh@viion.co.uk",
+                    "homepage": "http://xivpads.com/"
+                }
+            ],
+            "description": "An API for parsing lodestone data, designed and maintained by XIVPads.com and XIVDB.com",
+            "homepage": "http://github.com/viion/XIVPads-LodestoneAPI",
+            "keywords": [
+                "Final Fantasy XIV",
+                "The Lodestone",
+                "XIVDB",
+                "XIVPads",
+                "api"
+            ],
+            "time": "2015-06-19 19:07:54"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v1.1.1",
             "source": {
@@ -2991,7 +3038,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20
+        "zizaco/entrust": 20,
+        "viion/xivpads-lodestoneapi": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
