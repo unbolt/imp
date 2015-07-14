@@ -24,11 +24,17 @@
                         <div role="tabpanel" class="tab-pane" id="character-config">
                             <h3>Character Configuration</h3>
 
+                            <p>Add your character so people know who you are!</p>
+
                             <div class="dashboard-form">
                                 <form method="POST" action="/dashboard/character">
                                     {!! csrf_field() !!}
                                     <div>
                                         <input type="text" name="character_name" value="{{ $user->character_name }}" placeholder="Character Name" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                                    </div>
+
+                                    <div class="row">
+
                                     </div>
 
                                     <div>
