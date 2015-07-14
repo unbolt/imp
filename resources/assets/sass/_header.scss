@@ -1,0 +1,35 @@
+header {
+    border-bottom: 2px solid $highlight;
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    nav {
+        float: right;
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+
+            li {
+                display: table-cell;
+                height: 63px;
+                line-height: 63px;
+                padding-left: 20px;
+                padding-right: 20px;
+                text-transform: uppercase;
+                color: rgba(0,0,0,0.5);
+                transition: all 0.3s;
+
+                &:hover {
+                    background-color: $highlight;
+                    color: rgba(255,255,255,1);
+                }
+            }
+        }
+    }
+}
