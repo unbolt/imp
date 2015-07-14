@@ -56,7 +56,12 @@ class UserController extends Controller
         }
 
         if($request->primary_job) {
-
+            if($request->primary_job != $logged_in_user->character_name) {
+                $user->primary_job = $request->primary_job;
+                if($user->save()) {
+                    Session::flash('alert-success', 'Primary job updated.');
+                }
+            }
         }
 
         return redirect('dashboard');

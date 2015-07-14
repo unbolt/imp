@@ -194,7 +194,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Lodestone' => Viion\Lodestone\LodestoneAPI::class,
-        'Toastr'    => Kamaln7\Toastr\Facades\Toastr::class
+        'Toastr'    => Kamaln7\Toastr\Facades\Toastr::class,
+        'Carbon'    => Carbon\Carbon::class
     ],
 
 ];

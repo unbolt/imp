@@ -3,7 +3,7 @@
         <div class="background" style="background-image: url('{{ $user->profile_header or '/img/profile_default.png' }}')"></div>
         <div class="row">
             <div class="col-md-2">
-                <div class="user-image-full" style="background-image: url('{{ $user->character_image or '/img/profile_avatar_default.png' }}');"></div>
+                <div class="user-image-full" style="background-image: url('{{ $user->character_portrait or '/img/profile_avatar_default.png' }}');"></div>
             </div>
             <div class="col-md-10">
                 <div class="user-details">

@@ -10,7 +10,9 @@
         "zizaco/entrust": "dev-laravel-5",
         "viion/xivpads-lodestoneapi": "dev-master",
         "doctrine/dbal": "2.4.2",
-        "oriceon/toastr-5-laravel": "dev-master"
+        "oriceon/toastr-5-laravel": "dev-master",
+        "laravelcollective/html": "5.1.*",
+        "nesbot/carbon": "~1.20"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

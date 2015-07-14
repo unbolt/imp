@@ -2,6 +2,9 @@
 
 namespace App;
 
+use Cache;
+use Carbon;
+use Lodestone;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -20,6 +23,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $table = 'users';
 
+    // Add in our virtual fields
+    protected $appends = array('character_title', 'character_avatar', 'character_portrait');
+
     /**
      * The attributes that are mass assignable.
      *
@@ -33,4 +39,34 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    private function getOrSetCache($cacheValue, $character_id) {
+        if($character_id) {
+            if(Cache::has($cacheValue.'-'.$character_id)) {
+                return Cache::get($cacheValue.'-'.$character_id);
+            } else {
+                $lodestone = New Lodestone;
+                $character = $lodestone->Search->Character($character_id);
+
+                $expiresAt = Carbon::now()->addDay();
+
+                Cache::put($cacheValue.'-'.$character_id, $character->{$cacheValue}, $expiresAt);
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public function getCharacterTitleAttribute() {
+        // Check if the character has an ID
+        return $this->getOrSetCache('title', $this->character_id);
+    }
+
+    public function getCharacterAvatarAttribute() {
+        return $this->getOrSetCache('avatar', $this->character_id);
+    }
+
+    public function getCharacterPortraitAttribute() {
+        return $this->getOrSetCache('portrait', $this->character_id);
+    }
 }
