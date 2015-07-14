@@ -1,0 +1,52 @@
+.user-header {
+    background-color: $light;
+    position: relative;
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0; right: 0;
+        height: 200px;
+        z-index: 0;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .row {
+        z-index: 2;
+    }
+
+    .user-image-full {
+        width: 90%;
+        height: 270px;
+        margin: auto;
+        margin-top: 20px;
+        margin-left: 20px;
+        border: 3px solid $light;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .user-details {
+        padding-top: 200px;
+
+        .user-title {
+            color: lighten($dark, 50%);
+        }
+    }
+}
+
+.user-actions {
+    background-color: $light;
+    padding-top: 20px;
+
+    .icon-container {
+        margin-left: 20px;
+    }
+    .icon {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

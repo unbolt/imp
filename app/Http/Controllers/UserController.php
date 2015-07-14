@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use Session;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 
 class UserController extends Controller
 {
@@ -18,7 +22,45 @@ class UserController extends Controller
     public function dashboard()
     {
 
-        return view('user.dashboard');
+        // Get user data to display
+        $user = Auth::user();
+
+        return view('user.dashboard')->withUser($user);
+    }
+
+    // Update User's Character
+    public function updateCharacter(Request $request) {
+
+        $logged_in_user = Auth::user();
+
+        $user = User::find($logged_in_user->id);
+
+        if($request->character_name) {
+            // Character name is set
+
+            // Check if it has changed
+            if($request->character_name != $logged_in_user->character_name) {
+                $user->character_name = $request->character_name;
+                if($user->save()) {
+                    Session::flash('alert-success', 'Character name updated to '.$request->character_name);
+                }
+            }
+        } else {
+            // Character name isn't set, so we'll set the field to null just incase
+            // Otherwise laravel sets an empty field, not a null one - annoying.
+            $user->character_name = null;
+            $user->character_id = null;
+            if($user->save()) {
+                   Session::flash('alert-success', 'Character name deleted.');
+            }
+        }
+
+        if($request->primary_job) {
+
+        }
+
+        return redirect('dashboard');
+
     }
 
     /**

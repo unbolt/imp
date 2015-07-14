@@ -1,0 +1,29 @@
+.icon-defaults {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: auto;
+    cursor: pointer;
+    content: '';
+    display: block;
+}
+
+.icon {
+    @extend .icon-defaults;
+    height: 48px;
+    width: 48px;
+}
+
+.icon-small {
+    @extend .icon-defaults;
+    height: 24px;
+    width: 24px;
+}
+
+.icon-character-config {
+    background-image: url('/img/icons/character_configuration.png');
+}
+
+.icon-config {
+    background-image: url('/img/icons/system_configuration.png');
+}

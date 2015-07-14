@@ -88,3 +88,15 @@ textarea, input {
         margin-bottom: 10px;
     }
 }
+
+.dashboard-form {
+    .form-control {
+        @extend .standard-input;
+        @extend .input-large;
+        @extend .light-field-input;
+    }
+
+    button#submit {
+        margin-bottom: 10px;
+    }
+}

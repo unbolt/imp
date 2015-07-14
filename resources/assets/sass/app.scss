@@ -4,6 +4,31 @@
 
 /* Define variables */
 $highlight: #538ecd;
+$light: #fff;
+$dark: #000;
+
+/* Globals */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 26px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 18px;
+}
 
 /* Import stylesheets */
 
@@ -11,4 +36,6 @@ $highlight: #538ecd;
 @import 'header';
 @import 'logos';
 @import 'forms';
+@import 'user';
+@import 'icons';
 

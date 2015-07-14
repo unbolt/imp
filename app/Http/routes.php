@@ -32,4 +32,10 @@ Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
 /* USER RELATED ROUTES */
-Route::get('dashboard', 'UserController@dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    // View Dashboard
+    Route::get('dashboard', 'UserController@dashboard');
+
+    // Update character details
+    Route::post('dashboard/character', 'UserController@updateCharacter');
+});
