@@ -51,6 +51,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 $expiresAt = Carbon::now()->addDay();
 
                 Cache::put($cacheValue.'-'.$character_id, $character->{$cacheValue}, $expiresAt);
+
+                return $character->{$cacheValue};
             }
         } else {
             return null;
