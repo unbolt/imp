@@ -1,0 +1,19 @@
+.fullscreen_bg {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body.blurbg {
+    @extend .fullscreen_bg;
+    background-image: url('/img/background-blur.jpg');
+}
+
+body.default {
+    @extend .fullscreen_bg;
+    background-image: url('/img/background.jpg');
+}
