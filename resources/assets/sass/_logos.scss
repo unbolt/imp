@@ -1,0 +1,23 @@
+.logo_global {
+    display: block;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.logo_full {
+    @extend .logo_global;
+    padding-top: 20.6%; // Ratio for width:height of the full logo image
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-image: url('/img/logo_full.png');
+}
+
+.logo_small {
+    @extend .logo_global;
+    width: 103px;
+    height: 165px;
+    margin: auto;
+    background-image: url('/img/logo_small.png');
+}

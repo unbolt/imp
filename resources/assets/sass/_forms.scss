@@ -1,0 +1,90 @@
+textarea, input {
+    outline: none;
+}
+
+.standard-input {
+    border-radius: 1px;
+}
+
+.input-large {
+    margin: 5px 0;
+    padding: 0 10px;
+    font-size: 17px;
+    line-height: 20px;
+    height: 40px;
+}
+
+.dark-field-input {
+    border-color: rgba(255,255,255,0.3);
+    background-color: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.7);
+
+    &:hover {
+        border-color: rgba(255,255,255,0.7);
+    }
+
+    &:focus {
+        border-color: $highlight;
+    }
+}
+
+.light-field-input {
+    border-color: rgba(0,0,0,0.6);
+    background-color: rgba(255,255,255,0.5);
+    color: rgba(0,0,0,0.9);
+
+    &:hover {
+        border-color: rgba(0,0,0,1);
+    }
+
+    &:focus {
+        border-color: $highlight;
+    }
+}
+
+.btn {
+    border-radius: 2px;
+    border: 0px;
+    transition: background-color .2s,box-shadow .2s,background-color .2s,border-color .2s,color .2s;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.5);
+    color: lighten($highlight, 25%);
+
+    &:hover {
+        background-color: rgba(0,0,0,0);
+        color: #fff;
+    }
+}
+
+.btn-large {
+    height: 40px;
+    font-size: 17px;
+    line-height: 20px;
+    padding: 9px 10px;
+}
+
+.btn-primary {
+    background-color: $highlight;
+    background-image: linear-gradient(to bottom, $highlight, darken($highlight, 10%));
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3),0 0 0 1px rgba(255,255,255,0.15) inset;
+    border: 0;
+    color: #fff;
+
+    &:hover {
+        background-color: lighten($highlight, 1%);
+        background-image: none;
+    }
+}
+
+.login, .register {
+    .form-control {
+        @extend .standard-input;
+        @extend .input-large;
+        @extend .light-field-input;
+    }
+
+    button#submit {
+        margin-bottom: 10px;
+    }
+}
