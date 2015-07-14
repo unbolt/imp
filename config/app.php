@@ -136,6 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Kamaln7\Toastr\ToastrServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -143,7 +144,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-	Zizaco\Entrust\EntrustServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -191,8 +192,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-	'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-	'Lodestone' => Viion\Lodestone\LodestoneAPI::class
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Lodestone' => Viion\Lodestone\LodestoneAPI::class,
+        'Toastr'    => Kamaln7\Toastr\Facades\Toastr::class
     ],
 
 ];
