@@ -38,7 +38,16 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Create a new group
+        $role = new Role();
+        $role->name = str_slug($request->group_name, '-');
+        $role->display_name = $request->group_name;
+        $role->description = $request->group_description;
+        if($role->save()) {
+            Session::flash('alert-success', 'Group Created.');
+        }
+
+        return redirect('dashboard');
     }
 
     /**
