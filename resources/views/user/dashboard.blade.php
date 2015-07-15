@@ -118,6 +118,9 @@
                                                 {!! Form::select('user_id', $users_array, null, array('class' => 'form-control')) !!}
                                             </div>
                                         </div>
+                                        <div>
+                                            <button id="submit" type="submit" class="btn btn-primary">Add User to Group</button>
+                                        </div>
                                     </form>
                                 </div>
 
