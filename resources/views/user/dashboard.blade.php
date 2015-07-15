@@ -23,6 +23,8 @@
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <h3>Welcome back!</h3>
                             <hr/>
+
+                            {!! print_r($user->roles) !!}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="character-config">
                             <h3>Character Configuration</h3>
