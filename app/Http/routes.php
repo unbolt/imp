@@ -45,4 +45,5 @@ Route::group(['middleware' => 'auth'], function () {
 // TODO: Put this behind entrust
 Route::group(['middleware' => 'auth'], function () {
     Route::post('group/create', 'GroupController@store');
+    Route::post('group/addusertogroup', 'GroupController@addUserToGroup');
 });

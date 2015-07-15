@@ -52,6 +52,22 @@ class GroupController extends Controller
         return redirect('dashboard');
     }
 
+
+    // Add User to Role
+    public function addUserToGroup(Request $request)
+    {
+       // Grab the user
+        $user = User::where('id', '='. $request->user_id)->first();
+
+        if($user->attachRole($request->group_id)) {
+            Session::flash('alert-success', 'User added to group.');
+        } else {
+            Session::flas('alert-error', 'Could not add user to group.');
+        }
+
+        return redirect('dashboard');
+    }
+
     /**
      * Display the specified resource.
      *

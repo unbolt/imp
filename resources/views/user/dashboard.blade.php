@@ -107,7 +107,7 @@
                             <h4>Add User to Group</h4>
 
                                 <div class="dashboard-form">
-                                    <form method="POST" action="/user/addtogroup">
+                                    <form method="POST" action="/group/addtogroup">
                                         {!! csrf_field() !!}
 
                                         <div class="row">
