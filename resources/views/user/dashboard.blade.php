@@ -13,7 +13,9 @@
                     <div class="icon-container" role="tablist">
                         <a href="#character-config" class="icon icon-character-config" aria-controls="character-config" role="tab" data-toggle="tab"></a>
                         <a href="#account-config" class="icon icon-config" aria-controls="account-config" role="tab" data-toggle="tab"></a>
-
+                        <!-- TO DO: Hide this behind entrust -->
+                        <a href="#site-config" clas="icon icon-site-config" aria-controls="site-config" role="tab" data-toggle="tab"></a>
+                        <!-- End TO DO -->
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -70,6 +72,21 @@
                         <div role="tabpanel" class="tab-pane" id="account-config">
                             <h3>Account Configuration</h3>
                         </div>
+
+                        <!-- TO DO: Hide this behind entrust -->
+                        <div role="tabpanel" class="tab-pane" id="site-config">
+                            <h3>Site Configuration</h3>
+
+                            <h4>Manage Groups</h4>
+
+                            <!-- Get list of groups -->
+                            <h5>Current Groups</h5>
+
+                            <!-- Add a new group -->
+                            <h5>Add Group</h5>
+
+                        </div>
+                        <!-- END TO DO -->
                         <div role="tabpanel" class="tab-pane" id="other"></div>
                     </div>
                 </div>
