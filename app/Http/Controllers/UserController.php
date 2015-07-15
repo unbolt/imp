@@ -9,6 +9,7 @@ use Session;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Lodestone;
 
 
 class UserController extends Controller
@@ -41,6 +42,13 @@ class UserController extends Controller
             // Check if it has changed
             if($request->character_name != $logged_in_user->character_name) {
                 $user->character_name = $request->character_name;
+
+                $lodestone = New Lodestone;
+
+        		$character = $lodestone->Search->Character($user->character_name, 'Moogle');
+
+                $user->character_id = $character->id;
+
                 if($user->save()) {
                     Session::flash('alert-success', 'Character name updated to '.$request->character_name);
                 }
