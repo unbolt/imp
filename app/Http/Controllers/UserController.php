@@ -48,6 +48,12 @@ class UserController extends Controller
             $group_array[$group->id] = $group->display_name;
         }
 
+        $users_list = User::all();
+
+        foreach($users_list as $users) {
+            $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
+        }
+
         return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array);
     }
 
