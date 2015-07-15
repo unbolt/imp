@@ -115,7 +115,7 @@
                                                 {!! Form::select('group_id', $group_array, null, array('class' => 'form-control')) !!}
                                             </div>
                                             <div class="col-md-6">
-
+                                                {!! Form::select('user_id', $users_array, null, array('class' => 'form-control')) !!}
                                             </div>
                                         </div>
                                     </form>

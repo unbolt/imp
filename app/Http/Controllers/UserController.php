@@ -54,7 +54,7 @@ class UserController extends Controller
             $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
         }
 
-        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array);
+        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withUsersArray($users_array);
     }
 
     // Update User's Character
