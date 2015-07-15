@@ -22,10 +22,11 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <h3>Welcome back!</h3>
+                            <hr/>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="character-config">
                             <h3>Character Configuration</h3>
-
+                            <hr/>
                             <p>Add your character so people know who you are!</p>
 
                             <div class="dashboard-form">
@@ -53,6 +54,7 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="account-config">
                             <h3>Account Configuration</h3>
+                            <hr/>
                         </div>
 
                         <!-- TO DO: Hide this behind entrust -->
