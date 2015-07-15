@@ -106,6 +106,21 @@
                             <!-- Add user to group -->
                             <h4>Add User to Group</h4>
 
+                                <div class="dashboard-form">
+                                    <form method="POST" action="/user/addtogroup">
+                                        {!! csrf_field() !!}
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                {!! Form::select('group_id', $group_array, null, array('class' => 'form-control')) !!}
+                                            </div>
+                                            <div class="col-md-6">
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
                             <hr/>
 
                         </div>
