@@ -44,7 +44,11 @@ class UserController extends Controller
 
         $group_list = Role::all();
 
-        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list);
+        foreach($group_list as $group) {
+            $group_array[$group->id] = $group->display_name;
+        }
+
+        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array);
     }
 
     // Update User's Character
