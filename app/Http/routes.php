@@ -39,3 +39,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Update character details
     Route::post('dashboard/character', 'UserController@updateCharacter');
 });
+
+
+/* GROUP RELATED ROUTES */
+// TODO: Put this behind entrust
+Route::group['middleware' => 'auth'], function () {
+    Route::post('group/create', 'GroupController@createGroup');
+});
