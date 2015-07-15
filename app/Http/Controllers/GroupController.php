@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Role;
+use App\Role;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
