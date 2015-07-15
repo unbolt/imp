@@ -77,6 +77,8 @@
                         <div role="tabpanel" class="tab-pane" id="site-config">
                             <h3>Site Configuration</h3>
 
+                            <hr/>
+
                             <h4>Manage Groups</h4>
 
                             <!-- Get list of groups -->
@@ -84,6 +86,28 @@
 
                             <!-- Add a new group -->
                             <h5>Add Group</h5>
+
+                                <div class="dashboard-form">
+                                    <form method="POST" action="/group/create">
+                                        {!! csrf_field() !!}
+                                        <div>
+                                            <input type="text" name="group_name" placeholder="Group Name" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                                        </div>
+
+                                        <div>
+                                            <input type="text" name="group_description" placeholder="Group Description" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                                        </div>
+
+                                        <div>
+                                            <button id="submit" type="submit" class="btn btn-primary">Create Group</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            <!-- Add user to group -->
+                            <h4>Add User to Group</h4>
+
+                            <hr/>
 
                         </div>
                         <!-- END TO DO -->
