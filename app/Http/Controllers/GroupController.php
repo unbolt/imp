@@ -58,7 +58,7 @@ class GroupController extends Controller
     public function addUserToGroup(Request $request)
     {
        // Grab the user
-        $user = User::where('id', '='. $request->user_id)->first();
+        $user = User::find($request->user_id);
 
         if($user->attachRole($request->group_id)) {
             Session::flash('alert-success', 'User added to group.');
