@@ -14,7 +14,7 @@
                         <a href="#character-config" class="icon icon-character-config" aria-controls="character-config" role="tab" data-toggle="tab"></a>
                         <a href="#account-config" class="icon icon-config" aria-controls="account-config" role="tab" data-toggle="tab"></a>
                         <!-- TO DO: Hide this behind entrust -->
-                        <a href="#site-config" clas="icon icon-site-config" aria-controls="site-config" role="tab" data-toggle="tab"></a>
+                        <a href="#site-config" clas="icon icon-site-config" aria-controls="site-config" role="tab" data-toggle="tab">site config</a>
                         <!-- End TO DO -->
                     </div>
                 </div>
