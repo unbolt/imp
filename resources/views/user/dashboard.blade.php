@@ -69,11 +69,11 @@
                             <h5>Current Groups</h5>
 
                             <table class="table table-condensed">
-                                <th>
-                                    <td>Name</td>
-                                    <td>Description</td>
-                                    <td>Members</td>
-                                </th>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Members</th>
+                                </tr>
                                 @foreach ($group_list as $group)
                                     <tr>
                                         <td>{{ $group->display_name }}</td>
