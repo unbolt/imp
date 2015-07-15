@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use App\Role;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
