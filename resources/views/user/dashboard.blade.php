@@ -68,7 +68,20 @@
                             <!-- Get list of groups -->
                             <h5>Current Groups</h5>
 
-                            {!! print_r($group_list) !!}
+                            <table class="table table-condensed">
+                                <th>
+                                    <td>Name</td>
+                                    <td>Description</td>
+                                    <td>Members</td>
+                                </th>
+                                @foreach ($group_list as $group)
+                                    <tr>
+                                        <td>{{ $group->name }}</td>
+                                        <td>{{ $group->description }}</td>
+                                        <td>#</td>
+                                    </tr>
+                                @endforeach
+                            </table>
 
                             <!-- Add a new group -->
                             <h5>Add Group</h5>
