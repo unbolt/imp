@@ -10,7 +10,7 @@
                     <div class="user-name">
                         <h1>{{ $user->character_name or $user->name }}
                             @foreach ($user->roles as $role)
-                                {{ $role->name }}
+                                <div class="user-rank-icon {{ $role->name }}"></div>
                             @endforeach
                         </h1>
                         <p class="user-title">{{ $user->character_title or 'Please add your character for your title to be displayed.' }}</p>

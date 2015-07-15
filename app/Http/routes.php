@@ -47,3 +47,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('group/create', 'GroupController@store');
     Route::post('group/addtogroup', 'GroupController@addUserToGroup');
 });
+
+/* FORUM ADMINISTRATION RELATED ROUTES */
+// TODO: Put this behind entrust
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('forum/create', 'ForumController@store');
+});

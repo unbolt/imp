@@ -27,3 +27,26 @@
 .icon-config {
     background-image: url('/img/icons/system_configuration.png');
 }
+
+.icon-site-config {
+    background-image: url('/img/icons/ui_settings.png');
+}
+
+/* User rank icons */
+.user-rank-icon {
+    @extend .icon-defaults;
+    display: inline-block;
+    margin-right: 1px;
+}
+
+.admin, .administrators {
+    width: 9px;
+    height: 13px;
+    background-image: url('/img/icons/crystal.png');
+}
+
+.free-company-member, .members {
+    width: 8px;
+    height: 16px;
+    background-image: url('/img/icons/moogle.png');
+}

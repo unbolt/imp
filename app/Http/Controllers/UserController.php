@@ -8,6 +8,7 @@ use Auth;
 use Session;
 use App\Role;
 use App\User;
+use App\Forum;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Lodestone;
@@ -43,21 +44,32 @@ class UserController extends Controller
                 'astrologian' => 'Astrologian'
             );
 
-        $group_list = Role::all();
 
-        $group_array = array();
-        foreach($group_list as $group) {
-            $group_array[$group->id] = $group->display_name;
+
+
+        if($user->hasRole('administrators')) {
+
+            $group_list = Role::all();
+
+            $group_array = array();
+            foreach($group_list as $group) {
+                $group_array[$group->id] = $group->display_name;
+            }
+
+            $users_list = User::all();
+
+            $users_array = array();
+            foreach($users_list as $users) {
+                $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
+            }
+
+            $forums_list = Forum::all();
+
+            return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withUsersArray($users_array)->withForumList($forums_list);
+
+        } else {
+            return view('user.dashboard')->withUser($user)->withJobList($job_list);
         }
-
-        $users_list = User::all();
-
-        $users_array = array();
-        foreach($users_list as $users) {
-            $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
-        }
-
-        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withUsersArray($users_array);
     }
 
     // Update User's Character
@@ -78,11 +90,16 @@ class UserController extends Controller
 
         		$character = $lodestone->Search->Character($user->character_name, 'Moogle');
 
-                $user->character_id = $character->id;
+                if(isset($character->id)) {
+                    $user->character_id = $character->id;
 
-                if($user->save()) {
-                    Session::flash('alert-success', 'Character name updated to '.$request->character_name);
+                    if($user->save()) {
+                        Session::flash('alert-success', 'Character name updated to '.$request->character_name);
+                    }
+                } else {
+                    Session::flash('alert-error', 'Could not find character '.$request->character_name);
                 }
+
             }
         } else {
             // Character name isn't set, so we'll set the field to null just incase
