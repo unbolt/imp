@@ -72,7 +72,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->getOrSetCache('portrait', $this->character_id);
     }
 
-    public function roles() {
-        return $this->belongsToMany('Role', 'assigned_roles');
-    }
 }
