@@ -76,7 +76,7 @@
                                 </th>
                                 @foreach ($group_list as $group)
                                     <tr>
-                                        <td>{{ $group->name }}</td>
+                                        <td>{{ $group->display_name }}</td>
                                         <td>{{ $group->description }}</td>
                                         <td>#</td>
                                     </tr>
