@@ -63,7 +63,7 @@ class GroupController extends Controller
         if($user->attachRole($request->group_id)) {
             Session::flash('alert-success', 'User added to group.');
         } else {
-            Session::flas('alert-error', 'Could not add user to group.');
+            Session::flash('alert-error', 'Could not add user to group.');
         }
 
         return redirect('dashboard');
