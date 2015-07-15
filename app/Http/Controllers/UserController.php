@@ -42,7 +42,7 @@ class UserController extends Controller
                 'astrologian' => 'Astrologian'
             );
 
-        $group_list = Roles::all();
+        $group_list = Role::all();
 
         return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list);
     }
