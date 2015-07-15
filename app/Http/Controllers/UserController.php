@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Session;
+use App\Role;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -41,7 +42,9 @@ class UserController extends Controller
                 'astrologian' => 'Astrologian'
             );
 
-        return view('user.dashboard')->withUser($user)->withJobList($job_list);
+        $group_list = Roles::all();
+
+        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list);
     }
 
     // Update User's Character

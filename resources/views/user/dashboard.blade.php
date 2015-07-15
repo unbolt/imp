@@ -68,6 +68,8 @@
                             <!-- Get list of groups -->
                             <h5>Current Groups</h5>
 
+                            {!! print_r($group_list) !!}
+
                             <!-- Add a new group -->
                             <h5>Add Group</h5>
 
