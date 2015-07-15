@@ -45,12 +45,14 @@ class UserController extends Controller
 
         $group_list = Role::all();
 
+        $group_array = array();
         foreach($group_list as $group) {
             $group_array[$group->id] = $group->display_name;
         }
 
         $users_list = User::all();
 
+        $users_array = array();
         foreach($users_list as $users) {
             $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
         }
