@@ -25,7 +25,23 @@ class UserController extends Controller
         // Get user data to display
         $user = Auth::user();
 
-        return view('user.dashboard')->withUser($user);
+        $job_list = array(
+                'paladin' => 'Paladin',
+                'monk' => 'Monk',
+                'warrior' => 'Warrior',
+                'dragoon' => 'Dragoon',
+                'bard' => 'Bard',
+                'ninja' => 'Ninja',
+                'white-mage' => 'White Mage',
+                'black-mage' => 'Black Mage',
+                'scholar' => 'Scholar',
+                'summoner' => 'Summoner',
+                'dark-knight' => 'Dark Knight',
+                'machinist' => 'Machinist',
+                'astrologian' => 'Astrologian'
+            );
+
+        return view('user.dashboard')->withUser($user)->withJobList($job_list);
     }
 
     // Update User's Character
