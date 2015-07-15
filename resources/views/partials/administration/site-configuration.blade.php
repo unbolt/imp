@@ -90,6 +90,50 @@
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
+
+          <h4>Edit Forums</h4>
+
+          <table class="table table-condensed">
+              <tr>
+                  <th>Name</th>
+                  <th>Posts / Replies</th>
+                  <th></th>
+              </tr>
+              @foreach ($forum_list as $forum)
+                  <tr>
+                      <td>
+                          <strong>{{ $forum->name }}</strong><br />
+                          {{ $forum->description }}
+                      </td>
+                      <td>{{ $forum->post_count }} / {{ $forum->reply_count }}</td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td colspan="3">
+                          <div class="{{ $forum->slug }}-edit dashboard-form">
+                              <form method="POST" action="/forum/update/{{ $forum->id }}">
+                                  {!! csrf_field() !!}
+                                  <div>
+                                      <input type="text" name="name" placeholder="Forum Name" value="{{ $forum->name }}" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                                  </div>
+
+                                  <div>
+                                      <input type="text" name="description" placeholder="Forum Description" value="{{ $forum->description }}" class="form-control" tabindex="2" autocomplete="off" autocorrect="off" spellcheck="false">
+                                  </div>
+
+                                  <div class="row">
+                                        <div class="col-md-6"><input type="text" value="{{ $forum->display_order }}" name="display_order" class="form-control"></div>
+                                        <div class="col-md-6"> <button id="submit" type="submit" class="btn btn-primary">Update Forum</button></div>
+                                  </div>
+                              </form>
+                          </div>
+                      </td>
+                  </tr>
+              @endforeach
+          </table>
+
+          <hr/>
+
           <h4>Create Forum</h4>
 
           <div class="dashboard-form">

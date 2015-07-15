@@ -63,7 +63,7 @@ class UserController extends Controller
                 $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
             }
 
-            $forums_list = Forum::all();
+            $forums_list = Forum::orderBy('display_order', 'asc')->get();
 
             return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withUsersArray($users_array)->withForumList($forums_list);
 

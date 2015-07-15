@@ -52,4 +52,5 @@ Route::group(['middleware' => 'auth'], function () {
 // TODO: Put this behind entrust
 Route::group(['middleware' => 'auth'], function () {
     Route::post('forum/create', 'ForumController@store');
+    Route::post('forum/update/{id}', 'ForumController@update');
 });

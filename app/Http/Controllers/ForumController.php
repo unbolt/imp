@@ -108,7 +108,24 @@ class ForumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $forum = Forum::find($id);
+
+        $this->validate($request, [
+            'name' => 'required|unique:forums,name,'.$forum->id.'|max:255',
+            'description' => 'required'
+        ]);
+
+        // Update forum
+        $forum->name = $request->name;
+        $forum->slug = str_slug($request->name, '-');
+        $forum->description = $request->description;
+        $forum->display_order = $request->display_order;
+
+        if($forum->save()) {
+            Session::flash('alert-success', 'Forum updated.');
+        }
+
+        return redirect('dashboard');
     }
 
     /**
