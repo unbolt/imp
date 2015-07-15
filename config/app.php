@@ -145,6 +145,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -195,7 +196,9 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Lodestone' => Viion\Lodestone\LodestoneAPI::class,
         'Toastr'    => Kamaln7\Toastr\Facades\Toastr::class,
-        'Carbon'    => Carbon\Carbon::class
+        'Carbon'    => Carbon\Carbon::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];
