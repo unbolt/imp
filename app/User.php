@@ -71,4 +71,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getCharacterPortraitAttribute() {
         return $this->getOrSetCache('portrait', $this->character_id);
     }
+
 }

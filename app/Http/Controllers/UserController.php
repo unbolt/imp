@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Session;
+use App\Role;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,35 @@ class UserController extends Controller
         // Get user data to display
         $user = Auth::user();
 
-        return view('user.dashboard')->withUser($user);
+        $job_list = array(
+                'paladin' => 'Paladin',
+                'monk' => 'Monk',
+                'warrior' => 'Warrior',
+                'dragoon' => 'Dragoon',
+                'bard' => 'Bard',
+                'ninja' => 'Ninja',
+                'white-mage' => 'White Mage',
+                'black-mage' => 'Black Mage',
+                'scholar' => 'Scholar',
+                'summoner' => 'Summoner',
+                'dark-knight' => 'Dark Knight',
+                'machinist' => 'Machinist',
+                'astrologian' => 'Astrologian'
+            );
+
+        $group_list = Role::all();
+
+        foreach($group_list as $group) {
+            $group_array[$group->id] = $group->display_name;
+        }
+
+        $users_list = User::all();
+
+        foreach($users_list as $users) {
+            $users_array[$users->id] = $users->character_name ? $users->character_name : $users->name;
+        }
+
+        return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withUsersArray($users_array);
     }
 
     // Update User's Character
@@ -75,6 +104,7 @@ class UserController extends Controller
         return redirect('dashboard');
 
     }
+
 
     /**
      * Display a listing of the resource.

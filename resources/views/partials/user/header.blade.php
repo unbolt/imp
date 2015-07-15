@@ -8,7 +8,11 @@
             <div class="col-md-10">
                 <div class="user-details">
                     <div class="user-name">
-                        <h1>{{ $user->character_name or $user->name }}</h1>
+                        <h1>{{ $user->character_name or $user->name }}
+                            @foreach ($user->roles as $role)
+                                {{ $role->name }}
+                            @endforeach
+                        </h1>
                         <p class="user-title">{{ $user->character_title or 'Please add your character for your title to be displayed.' }}</p>
                     </div>
                 </div>
