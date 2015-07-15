@@ -39,7 +39,7 @@
                                         <div class="col-md-6 text-right">
                                         </div>
                                         <div class="col-md-6">
-                                            {{ Form::select('primary_job', $job_list, $user->primary_job, array('class' => 'form-control')) }}
+                                            {!! Form::select('primary_job', $job_list, $user->primary_job, array('class' => 'form-control')) !!}
                                         </div>
                                     </div>
 
