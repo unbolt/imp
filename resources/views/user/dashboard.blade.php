@@ -39,25 +39,7 @@
                                         <div class="col-md-6 text-right">
                                         </div>
                                         <div class="col-md-6">
-                                            <select class="form-control" name="primary_job">
-                                                <option>Primary Job</option>
-                                                <option disabled>--- Disciples of War ---</option>
-                                                <option value="paladin">Paladin</option>
-                                                <option value="monk">Monk</option>
-                                                <option value="warrior">Warrior</option>
-                                                <option value="dragoon">Dragoon</option>
-                                                <option value="bard">Bard</option>
-                                                <option value="ninja">Ninja</option>
-                                                <option disabled>--- Disciples of Magic ---</option>
-                                                <option value="white-mage">White Mage</option>
-                                                <option value="black-mage">Black Mage</option>
-                                                <option value="scholar">Scholar</option>
-                                                <option value="summoner">Summoner</option>
-                                                <option disabled>--- Extra Jobs ---</option>
-                                                <option value="dark-knight">Dark Knight</option>
-                                                <option value="machinist">Machinist</option>
-                                                <option value="astrologian">Astrologian</option>
-                                            </select>
+                                            {{ Form::select('primary_job', $job_list, $user->primary_job, array('class' => 'form-control')) }}
                                         </div>
                                     </div>
 
