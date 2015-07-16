@@ -43,6 +43,38 @@
                     <hr/>
                 </div>
             </div>
+
+            <section class="thread-list">
+            @foreach($threads as $thread)
+                <div class="row thread-row">
+                    <div class="col-sm-1">
+                        <a href="/profile/{{ $thread->user->id }}/{!! str_slug($thread->user->character_name, '-') !!}"><div class="user-avatar" style="background-image: url('{{ $thread->user->character_avatar or '/img/profile_avatar_default.png' }}');"></div></a>
+                    </div>
+                    <div class="col-md-5">
+                        <h3><a href="/thread/{{ $thread->id }}/{{ $thread->slug }}">{{ $thread->title }}</a></h3>
+                        <p class="thread-description">posted {!! Carbon::createFromTimeStamp(strtotime($thread->created_at))->diffForHumans(); !!} by <strong>{{ $thread->user->character_name or $thread->user->name }}</strong></p>
+                    </div>
+                    <div class="col-md-1 text-center">
+                        <h3>{{ $thread->view_count }}</h3>
+                        <p class="count-description">views</p>
+                    </div>
+                    <div class="col-md-1 text-center">
+                        <h3>{{ $thread->reply_count }}</h3>
+                        <p class="count-description">replies</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="latest-reply">
+                            @if ($thread->latest_reply)
+                                <strong>{{ $thread->latest_reply->user->character_name }}</strong> {!! Carbon::createFromTimeStamp(strtotime($thread->latest_reply->created_at))->diffForHumans(); !!}
+                                <p>
+                                    {{ str_limit($thread->latest_reply->content, 50) }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            </section>
         </section>
     </div>
 @stop

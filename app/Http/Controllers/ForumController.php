@@ -72,8 +72,6 @@ class ForumController extends Controller
         $forum->name = $request->name;
         $forum->slug = str_slug($request->name, '-');
         $forum->description = $request->description;
-        $forum->post_count = '0';
-        $forum->reply_count = '0';
 
         if($forum->save()) {
             // Grant the admin access to the forum
@@ -124,8 +122,9 @@ class ForumController extends Controller
         */
 
         // Get the threads in the forum
+        $threads = Post::with('user')->Topic()->ByForum($forum->id)->orderBy('reply_on', 'DESC')->get();
 
-        return view('forums.threadlist')->withForum($forum);
+        return view('forums.threadlist')->withForum($forum)->withThreads($threads);
     }
 
     /**

@@ -4,6 +4,27 @@
     padding: 10px;
 }
 
+.count-description {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: lighten($dark, 50%);
+}
+
+.latest-reply {
+    height: 56px;
+    border-left: 3px solid $highlight;
+    padding-left: 10px;
+    font-size: 0.8em;
+
+    span {
+        line-height: 20px;
+    }
+
+    p {
+        margin-top: 5px;
+    }
+}
+
 .forum-row {
     margin-bottom: 10px;
     h3 {
@@ -11,23 +32,43 @@
         margin-bottom: 5px;
     }
 
-    .count-description {
-        text-transform: uppercase;
-        font-size: 0.8em;
-        color: lighten($dark, 50%);
-    }
-
     .forum-icon {
-        margin: auto;
+        margin-left: 15px;
         height: 56px;
         width: 56px;
         border-radius: 28px;
         background-color: $highlight;
     }
+}
 
-    .latest-reply {
-        height: 56px;
-        border-left: 3px solid $highlight;
-        padding-left: 5px;
+.thread-list {
+    .thread-row {
+        margin-bottom: 10px;
+
+        h3 {
+            margin: 0px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .thread-description {
+            font-size: 0.9em;
+            color: lighten($dark, 50%);
+        }
+
+        .user-avatar {
+            margin-left: 15px;
+            height: 56px;
+            width: 56px;
+            border-radius: 28px;
+            display: block;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
     }
+
 }

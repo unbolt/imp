@@ -6,6 +6,16 @@
     background-repeat: no-repeat;
 }
 
+.user-avatar-tiny {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 
 .user-header {
     background-color: $light;

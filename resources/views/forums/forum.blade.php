@@ -42,7 +42,12 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="latest-reply">
-                                    Latest reply
+                                    @if ($forum->latest_reply)
+                                        <strong>{{ $forum->latest_reply->user->character_name }}</strong> {!! Carbon::createFromTimeStamp(strtotime($forum->latest_reply->created_at))->diffForHumans(); !!}
+                                        <p>
+                                            {{ str_limit($forum->latest_reply->content, 50) }}
+                                        </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

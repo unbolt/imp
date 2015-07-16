@@ -59,5 +59,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('forums', 'ForumController@index');
     Route::get('forums/{slug}', 'ForumController@show');
+    Route::get('thread/{id}/{slug}', 'PostController@show');
     Route::post('post/create', 'PostController@store');
 });
