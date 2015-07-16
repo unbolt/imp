@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use Session;
 use App\Role;
 use App\Permission;
 use App\Forum;
+use App\Post;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +22,25 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //
+        // Display the forum index
+
+        // Get the users permissions
+        GLOBAL $canAccess;
+        $canAccess = Auth::user()->getPermissions();
+
+        // Get the list of forums the user has access to
+        $forums = Forum::all();
+
+        $filteredForums = $forums->filter(function ($item) {
+            $forum_permission = 'access-forum-'.$item->id;
+
+            if(in_array($forum_permission, $GLOBALS['canAccess'])) {
+                return $item;
+            }
+        });
+
+        return view('forums.forum')->withForums($filteredForums);
+
     }
 
     /**
@@ -83,9 +103,29 @@ class ForumController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        // Get the threads for a specific forum and return the view
+        // Get the users permissions
+        GLOBAL $canAccess;
+        $canAccess = Auth::user()->getPermissions();
+
+        // Get the forum details
+        $forum = Forum::where('slug', $slug)->first();
+
+        /*
+        $filteredForums = $forums->filter(function ($item) {
+            $forum_permission = 'access-forum-'.$item->id;
+
+            if(in_array($forum_permission, $GLOBALS['canAccess'])) {
+                return $item;
+            }
+        });
+        */
+
+        // Get the threads in the forum
+
+        return view('forums.threadlist')->withForum($forum);
     }
 
     /**

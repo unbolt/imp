@@ -1,0 +1,33 @@
+.forum-display {
+    margin-top: 20px;
+    background-color: $light;
+    padding: 10px;
+}
+
+.forum-row {
+    margin-bottom: 10px;
+    h3 {
+        margin: 0px;
+        margin-bottom: 5px;
+    }
+
+    .count-description {
+        text-transform: uppercase;
+        font-size: 0.8em;
+        color: lighten($dark, 50%);
+    }
+
+    .forum-icon {
+        margin: auto;
+        height: 56px;
+        width: 56px;
+        border-radius: 28px;
+        background-color: $highlight;
+    }
+
+    .latest-reply {
+        height: 56px;
+        border-left: 3px solid $highlight;
+        padding-left: 5px;
+    }
+}

@@ -54,3 +54,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('forum/create', 'ForumController@store');
     Route::post('forum/update/{id}', 'ForumController@update');
 });
+
+/* FORUM VIEW AND POST ROUTES */
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('forums', 'ForumController@index');
+    Route::get('forums/{slug}', 'ForumController@show');
+    Route::post('post/create', 'PostController@store');
+});

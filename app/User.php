@@ -5,6 +5,8 @@ namespace App;
 use Cache;
 use Carbon;
 use Lodestone;
+use Role;
+use Permission;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -70,6 +72,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function getCharacterPortraitAttribute() {
         return $this->getOrSetCache('portrait', $this->character_id);
+    }
+
+    public function getPermissions() {
+        $roles = $this->roles;
+
+        $canAccess = array();
+
+        foreach($roles as $role) {
+            $permissions = $role->perms()->get();
+            foreach($permissions as $permission) {
+                $canAccess = array_add($canAccess, $permission->name, $permission->name);
+            }
+        }
+
+        return $canAccess;
     }
 
 }

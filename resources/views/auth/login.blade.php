@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.noheader')
 
 @section('title', 'Login')
 @section('body_class', 'blurbg')
