@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use App\Role;
+use App\Permission;
 use App\User;
 use App\Forum;
 use App\Http\Requests;
@@ -56,6 +57,13 @@ class UserController extends Controller
                 $group_array[$group->id] = $group->display_name;
             }
 
+            $permission_list = Permission::all();
+
+            $permission_array = array();
+            foreach($permission_list as $permission) {
+                $permission_array[$permission->id] = $permission->display_name;
+            }
+
             $users_list = User::all();
 
             $users_array = array();
@@ -65,7 +73,7 @@ class UserController extends Controller
 
             $forums_list = Forum::orderBy('display_order', 'asc')->get();
 
-            return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withUsersArray($users_array)->withForumList($forums_list);
+            return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withPermissionArray($permission_array)->withUsersArray($users_array)->withForumList($forums_list);
 
         } else {
             return view('user.dashboard')->withUser($user)->withJobList($job_list);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use App\Role;
+use App\Permission;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -67,6 +68,20 @@ class GroupController extends Controller
         }
 
         return redirect('dashboard');
+    }
+
+    // Add permission to role
+    public function addPermissionToGroup(Request $request)
+    {
+        $permission = Permission::find($request->permission_id);
+
+        $role = Role::find($request->role_id);
+
+        $role->attachPermission($permission);
+
+        Session::flash('alert-success', 'Permission Granted');
+
+        return back();
     }
 
     /**

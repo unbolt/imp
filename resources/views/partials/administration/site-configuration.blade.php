@@ -155,4 +155,39 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Manage Group Access
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+          <p>
+              Select a group, and then select a permission to grant to it.
+          </p>
+
+          <div class="dashboard-form">
+              <form method="POST" action="/group/addpermission">
+                  {!! csrf_field() !!}
+
+                  <div class="row">
+                        <div class="col-md-6">
+                            {!! Form::select('role_id', $group_array, null, array('class' => 'form-control')) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Form::select('permission_id', $permission_array, null, array('class' => 'form-control')) !!}
+                        </div>
+                  </div>
+                  <div>
+                      <button id="submit" type="submit" class="btn btn-primary">Add Permission to Group</button>
+                  </div>
+              </form>
+          </div>
+
+      </div>
+    </div>
+  </div>
 </div>

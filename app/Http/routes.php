@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::post('group/create', 'GroupController@store');
     Route::post('group/addtogroup', 'GroupController@addUserToGroup');
+    Route::post('group/addpermission', 'GroupController@addPermissionToGroup');
 });
 
 /* FORUM ADMINISTRATION RELATED ROUTES */
