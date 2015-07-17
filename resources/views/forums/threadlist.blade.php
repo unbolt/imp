@@ -8,33 +8,48 @@
         <section class="forum-display">
             <div class="row">
                 <div class="col-md-8">
-                    <h2>Forums / {{ $forum->name }}</h2>
+                    <h2><a href="/forums">Forums</a> / {{ $forum->name }}</h2>
                 </div>
-                <div class="col-md-4 text-right">
-                    <button class="btn">New Topic</button>
+                <div class="col-md-4 text-right forum-form">
+                    <button class="btn btn-primary new-topic">New Topic</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="new_topic">
-                        <h2>New Topic</h2>
-                        <form method="POST" action="/post/create">
-                            {!! csrf_field() !!}
+                    <div class="new-topic-form">
+                        <hr/>
 
-                            <input type="hidden" name="forum_id" value="{{ $forum->id }}" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>New Topic</h3>
+                                <div class="forum-form">
+                                    <form method="POST" action="/post/create">
+                                        {!! csrf_field() !!}
 
-                            <div>
-                                <input type="text" name="title" placeholder="Thread Title" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
-                            </div>
+                                        <input type="hidden" name="forum_id" value="{{ $forum->id }}" />
 
-                            <div>
-                                <textarea name="content" class="form-contronl" tabindex="2"></textarea>
+                                        <div>
+                                            <input id="thread-title" type="text" name="title" placeholder="Thread Title" value="{{ old('title') }}" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                                        </div>
+
+                                        <div>
+                                            <textarea id="thread-content" name="content" class="form-control post-content-textarea" tabindex="2">{{ old('content') }}</textarea>
+                                            </div>
+
+                                        <div>
+                                            <button id="submit" type="submit" class="btn btn-primary">Post Topic</button>
+                                        </div>
+                                    </form>
                                 </div>
-
-                            <div>
-                                <button id="submit" type="submit" class="btn btn-primary">Post Topic</button>
                             </div>
-                        </form>
+                            <div class="col-md-6">
+                                <h3>Live Preview</h3>
+                                <h4 id="live-preview-thread-title"></h4>
+                                <div id="live-preview-thread-content"></div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>

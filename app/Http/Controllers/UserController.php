@@ -96,7 +96,7 @@ class UserController extends Controller
 
                 $lodestone = New Lodestone;
 
-        		$character = $lodestone->Search->Character($user->character_name, 'Moogle');
+        		$character = $lodestone->Search->Character($request->character_name, 'Moogle');
 
                 if(isset($character->id)) {
                     $user->character_id = $character->id;

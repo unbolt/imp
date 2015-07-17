@@ -18,6 +18,18 @@ use App\Http\Controllers\Controller;
 class PostController extends Controller
 {
     public function store(Request $request) {
+
+        if($request->thread_id) {
+            $this->validate($request, [
+                'content' => 'required'
+            ]);
+        } else {
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'content' => 'required'
+            ]);
+        }
+
         // Create a new post
         $post = New Post;
         $post->title = $request->title;
@@ -81,7 +93,12 @@ class PostController extends Controller
 
     public function show($id, $slug) {
         // Show a thread
+
+        // Get the OP
         $post = Post::find($id);
+
+        // Get the replies
+        $replies = Post::where('thread_id', $id)->get();
 
         // Add a view to this thread
         $view = New ThreadView;
@@ -89,6 +106,6 @@ class PostController extends Controller
         $view->post_id = $id;
         $view->save();
 
-        return view('forums.thread')->withThread($post);
+        return view('forums.thread')->withThread($post)->withReplies($replies);
     }
 }
