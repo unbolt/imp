@@ -122,7 +122,13 @@ class ForumController extends Controller
         */
 
         // Get the threads in the forum
-        $threads = Post::with('user')->Topic()->ByForum($forum->id)->orderBy('reply_on', 'DESC')->paginate(15);
+        $threads = Post::with('user')
+                        ->Topic()
+                        ->ByForum($forum->id)
+                        ->orderBy('announcement', 'DESC')
+                        ->orderBy('sticky', 'DESC')
+                        ->orderBy('reply_on', 'DESC')
+                        ->paginate(15);
 
         return view('forums.threadlist')->withForum($forum)->withThreads($threads);
     }

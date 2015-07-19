@@ -30,6 +30,33 @@
                 @include('partials.forums.post', ['post' => $reply])
             @endforeach
 
+            @if(Auth::user()->hasRole('administrators'))
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <div class="forum-form">
+                            <form method="POST" id="admin_thread_controls" action="/thread/controls">
+                                {!! csrf_field() !!}
+                                <input type="hidden" name="post_id" value="{{ $thread->id }}" />
+                                <select name="mod_thread" id="mod_controls">
+                                        <option selected disabled>Thread Controls</option>
+                                    @if($thread->sticky)
+                                        <option value="unstick">Unsticky Thread</option>
+                                    @else
+                                        <option value="stick">Stick Thread</option>
+                                    @endif
+
+                                    @if($thread->announcement)
+                                        <option value="unannounce">Unannounce Thread</option>
+                                    @else
+                                        <option value="announce">Announce Thread</option>
+                                    @endif
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="post-reply-form forum-form">

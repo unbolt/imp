@@ -67,12 +67,20 @@
 
             <section class="thread-list">
             @foreach($threads as $thread)
-                <div class="row thread-row">
+                <div class="row thread-row @if($thread->announcement) thread-announcement @endif @if($thread->sticky) thread-sticky @endif">
                     <div class="col-sm-1">
                         <a href="/profile/{{ $thread->user->id }}/{!! str_slug($thread->user->character_name, '-') !!}"><div class="user-avatar" style="background-image: url('{{ $thread->user->character_avatar or '/img/profile_avatar_default.png' }}');"></div></a>
                     </div>
                     <div class="col-md-5">
-                        <h3><a href="/thread/{{ $thread->id }}/{{ $thread->slug }}">{{ $thread->title }}</a></h3>
+                        <h3>
+                            @if($thread->announcement)
+                                <span class="announcement badge">Announcement</span>
+                            @endif
+                            @if($thread->sticky)
+                                <span class="sticky badge">Sticky</span>
+                            @endif
+                            <a href="/thread/{{ $thread->id }}/{{ $thread->slug }}">{{ $thread->title }}</a>
+                        </h3>
                         <p class="thread-description">posted {!! Carbon::createFromTimeStamp(strtotime($thread->created_at))->diffForHumans(); !!} by <strong>{{ $thread->user->character_name or $thread->user->name }}</strong></p>
                     </div>
                     <div class="col-md-1 text-center">

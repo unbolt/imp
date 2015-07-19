@@ -69,6 +69,36 @@
             background-position: center center;
             background-repeat: no-repeat;
         }
+
+        .badge {
+            text-transform: uppercase;
+            border-radius: 2px;
+            font-weight: normal;
+        }
+
+        &.thread-announcement {
+            h3 {
+                a {
+                    color: red;
+                }
+            }
+
+            .badge {
+                background-color: red;
+            }
+        }
+
+        &.thread-sticky {
+            h3 {
+                a {
+                    color: green;
+                }
+            }
+
+            .badge {
+                background-color: green;
+            }
+        }
     }
 }
 

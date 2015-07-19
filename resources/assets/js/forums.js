@@ -55,4 +55,9 @@ $(function () {
         $(this).html( html );
         fPopLoadItem();
     });
+
+    // Automatically submit the admin mod controls when changed
+    $('#mod_controls').change( function () {
+        this.form.submit();
+    });
 });

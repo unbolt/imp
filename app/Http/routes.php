@@ -66,3 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('thread/{id}/{slug}', 'PostController@show');
     Route::post('post/create', 'PostController@store');
 });
+
+/* THREAD ADMIN ROUTES */
+// TODO: Put this behind untrust
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('thread/controls', 'PostController@updateStatus');
+});

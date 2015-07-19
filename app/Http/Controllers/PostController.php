@@ -108,4 +108,30 @@ class PostController extends Controller
 
         return view('forums.thread')->withThread($post)->withReplies($replies);
     }
+
+    public function updateStatus(Request $request) {
+        // Update the threads status between stick/unstick/announce/unannounce
+
+        $post = Post::find($request->post_id);
+
+        if($request->mod_thread == 'unstick') {
+            $post->sticky = null;
+            Session::flash('alert-success', 'Thread Unstuck');
+        } elseif ($request->mod_thread == 'stick') {
+            $post->sticky = 1;
+            $post->announcement = null;
+            Session::flash('alert-success', 'Thread Stuck');
+        } elseif ($request->mod_thread == 'unannounce') {
+            $post->announcement = null;
+            Session::flash('alert-success', 'Thread Unannounced');
+        } elseif ($request->mod_thread == 'announce') {
+            $post->announcement = 1;
+            $post->sticky = null;
+            Session::flash('alert-success', 'Thread Announced');
+        }
+
+        $post->save();
+
+        return back();
+    }
 }
