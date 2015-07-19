@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('dashboard/signature', 'UserController@updateSignature');
 });
 
+Route::get('user/updateonline', 'UserController@updateOnline');
 
 /* GROUP RELATED ROUTES */
 // TODO: Put this behind entrust

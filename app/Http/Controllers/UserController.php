@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Session;
+use Carbon;
 use App\Role;
 use App\Permission;
 use App\User;
@@ -151,6 +152,18 @@ class UserController extends Controller
 
         return back();
 
+    }
+
+    // Update online status
+    public function updateOnline(Request $request) {
+        $logged_in_user = Auth::user();
+
+        if($logged_in_user) {
+            $logged_in_user->active_at = Carbon::now();
+            $logged_in_user->save();
+        }
+
+        return response()->json(['success' => 'true'], 200);
     }
 
 
