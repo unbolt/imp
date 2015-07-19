@@ -79,32 +79,32 @@
         &.thread-announcement {
             h3 {
                 a {
-                    color: red;
+                    color: $red;
                 }
             }
 
             .badge {
-                background-color: red;
+                background-color: $red;
             }
 
             .latest-reply {
-                border-color: red;
+                border-color: $red;
             }
         }
 
         &.thread-sticky {
             h3 {
                 a {
-                    color: green;
+                    color: $green;
                 }
             }
 
             .badge {
-                background-color: green;
+                background-color: $green;
             }
 
             .latest-reply {
-                border-color: green;
+                border-color: $green;
             }
         }
     }

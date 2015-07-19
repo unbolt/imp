@@ -134,4 +134,22 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function update(Request $request) {
+
+        $this->validate($request, [
+            'content' => 'required'
+        ]);
+
+        $post = Post::find($request->post_id);
+
+        if($post->user_id == Auth::user()->id) {
+            $post->content = $request->content;
+            $post->save();
+
+            return response()->json(['success' => 'true'], 200);
+        } else {
+            return response()->json(['success' => 'false', 'errors' => 'This is not your post to edit.'], 422);
+        }
+    }
 }
