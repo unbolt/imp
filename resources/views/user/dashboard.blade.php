@@ -25,32 +25,9 @@
                             <hr/>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="character-config">
-                            <h3>Character Configuration</h3>
+                            <h3>Profile Configuration</h3>
                             <hr/>
-                            <p>Add your character so people know who you are!</p>
-
-                            <div class="dashboard-form">
-                                <form method="POST" action="/dashboard/character">
-                                    {!! csrf_field() !!}
-                                    <div>
-                                        <input type="text" name="character_name" value="{{ $user->character_name }}" placeholder="Character Name" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 text-right">
-                                        </div>
-                                        <div class="col-md-6">
-                                            {!! Form::select('primary_job', $job_list, $user->primary_job, array('class' => 'form-control')) !!}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <button id="submit" type="submit" class="btn btn-primary">Update Character Details</button>
-                                    </div>
-                                </form>
-                            </div>
-
-
+                            @include('partials.user.profile-configuration', ['user' => $user])
                         </div>
                         <div role="tabpanel" class="tab-pane" id="account-config">
                             <h3>Account Configuration</h3>

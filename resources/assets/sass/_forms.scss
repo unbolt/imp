@@ -61,6 +61,16 @@ textarea, input {
     }
 }
 
+.btn-link {
+    background: none;
+    color: lighten($dark, 50%);
+    text-shadow: none;
+
+    &:hover {
+        color: $highlight;
+    }
+}
+
 .btn-large {
     height: 40px;
     font-size: 17px;

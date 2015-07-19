@@ -36,8 +36,14 @@
                                             <textarea id="thread-content" name="content" class="form-control post-content-textarea" tabindex="2">{{ old('content') }}</textarea>
                                             </div>
 
-                                        <div>
-                                            <button id="submit" type="submit" class="btn btn-primary">Post Topic</button>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button id="submit" type="submit" class="btn btn-primary">Post Topic</button>
+                                            </div>
+                                            <div class="col-md-6 text-right">
+                                                <a class="btn btn-link" href="http://imgur.com/" target="_blank">Image Hosting</a>
+                                                <a class="btn btn-link" href="http://markdown-guide.readthedocs.org/en/latest/basics.html" target="_blank">Markdown Help</a>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -89,6 +95,8 @@
                     </div>
                 </div>
             @endforeach
+
+            {!! $threads->render() !!}
             </section>
         </section>
     </div>

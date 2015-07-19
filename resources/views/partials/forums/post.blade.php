@@ -23,6 +23,14 @@
                 Posted {!! Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans(); !!}
             </div>
             <div class="process-markdown">{{ $post->content }}</div>
+
+            <hr/>
+
+            <div class="signature">
+                <div class="process-markdown">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
