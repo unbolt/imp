@@ -47,9 +47,9 @@ class ForumController extends Controller
         while( ($postcount <= 3) ) {
 
             if($offset !== 0){
-                $post = Post::topic()->skip($offset)->orderBy('created_at', 'DESC')->first();
+                $post = Post::topic()->with('forum')->skip($offset)->orderBy('created_at', 'DESC')->first();
             } else {
-                $post = Post::topic()->orderBy('created_at', 'DESC')->first();
+                $post = Post::topic()->with('forum')->orderBy('created_at', 'DESC')->first();
             }
 
             if($post) {

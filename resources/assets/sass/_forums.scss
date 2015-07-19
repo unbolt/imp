@@ -4,6 +4,39 @@
     padding: 10px;
 }
 
+.recent-topic {
+    background-color: $highlight;
+    color: $light;
+    display: block;
+    padding: 15px;
+    height: 100px;
+    position: relative;
+
+    h4 {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0px; padding: 0px;
+    }
+
+    span {
+        font-size: 0.7em;
+    }
+
+    .reply_count {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    &:hover {
+        color: $light;
+        text-decoration: none;
+        background-color: darken($highlight, 10%);
+    }
+}
+
 .count-description {
     text-transform: uppercase;
     font-size: 0.8em;

@@ -15,7 +15,11 @@
             <div class="row">
                 @foreach($latest_posts as $post)
                      <div class="col-md-3">
-                         {{ $post->title }}
+                         <a href="/thread/{{ $post->id }}/{{ $post->slug }}" class="recent-topic {{ $post->forum->slug }}">
+                             <h4>{{ $post->title }}</h4>
+                             <span><strong>{{ $post->forum->name }}</strong> &nbsp;{!! Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans(); !!} </span>
+                             <div class="reply_count"> {{ $post->reply_count }}</div>
+                         </a>
                      </div>
                 @endforeach
             </div>
