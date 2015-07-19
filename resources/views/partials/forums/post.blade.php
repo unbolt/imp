@@ -25,7 +25,7 @@
                     &nbsp;<span class="glyphicon glyphicon-pencil edit-button" aria-hidden="true"></span>
                 @endif
 
-                @if($post->created_at !== $post->updated_at)
+                @if($post->created_at != $post->updated_at)
                     &nbsp;<em>&laquo; Last Edited {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!} &raquo;</em>
                 @endif
             </div>
