@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Update character details
     Route::post('dashboard/character', 'UserController@updateCharacter');
+
+    // Update signature
+    Route::post('dashboard/signature', 'UserController@updateSignature');
 });
 
 

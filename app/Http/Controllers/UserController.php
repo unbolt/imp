@@ -132,6 +132,21 @@ class UserController extends Controller
 
     }
 
+    // Update signature
+    public function updateSignature(Request $request) {
+        $logged_in_user = Auth::user();
+        $user = User::find($logged_in_user->id);
+        $user->signature = $request->signature;
+        if($user->save()) {
+            Session::flash('alert-success', 'Signature updated.');
+        } else {
+            Session::flash('alert-warning', 'Could not update signature.');
+        }
+
+        return back();
+
+    }
+
 
     /**
      * Display a listing of the resource.

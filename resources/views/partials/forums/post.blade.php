@@ -27,9 +27,7 @@
             <hr/>
 
             <div class="signature">
-                <div class="process-markdown">
-
-                </div>
+                <div class="process-markdown">{{ $post->user->signature }}</div>
             </div>
         </div>
     </div>

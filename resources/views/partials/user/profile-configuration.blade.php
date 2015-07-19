@@ -3,7 +3,7 @@
     <div class="panel-heading" role="tab" id="profileHeadingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#profileAccordion" href="#profileOne" aria-expanded="true" aria-controls="profileOne">
-          Character Configuration
+          Character
         </a>
       </h4>
     </div>
@@ -38,13 +38,25 @@
     <div class="panel-heading" role="tab" id="profileHeadingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#profileAccordion" href="#profileTwo" aria-expanded="false" aria-controls="profileTwo">
-          Signature Configuration
+          Signature
         </a>
       </h4>
     </div>
     <div id="profileTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="profileTwo">
       <div class="panel-body">
+          <div class="dashboard-form">
+              <form method="POST" action="/dashboard/signature">
+                  {!! csrf_field() !!}
 
+                  <div>
+                      <textarea id="thread-content" name="signature" class="form-control post-content-textarea" tabindex="2">{{ $user->signature }}</textarea>
+                  </div>
+
+                  <div>
+                      <button id="submit" type="submit" class="btn btn-primary">Update Signature</button>
+                  </div>
+              </form>
+          </div>
       </div>
     </div>
   </div>

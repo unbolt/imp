@@ -125,9 +125,14 @@
         text-transform: uppercase;
         margin-bottom: 10px;
     }
+
+    .signature {
+        color: lighten($dark, 50%);
+        font-size: 0.8em;
+    }
 }
 
 /* Forum form visibilty */
-.new-topic-form, .post-reply-form {
+.new-topic-form {
     display: none;
 }

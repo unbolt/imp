@@ -37,6 +37,18 @@ $(function () {
         fPopLoadItem();
     });
 
+    $('#post-content').keyup(function (e) {
+        // Process the markdown
+        str = $(this).val();
+
+        html = converter.makeHtml(str);
+        console.log(html);
+
+        $('#live-preview-post-content').html( html );
+
+        fPopLoadItem();
+    });
+
     $('.process-markdown').each(function() {
         str = $(this).html();
         html = converter.makeHtml(str);

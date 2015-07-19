@@ -126,8 +126,8 @@ textarea, input {
 .dashboard-form {
     .form-control {
         @extend .standard-input;
-        @extend .input-large;
         @extend .light-field-input;
+        margin-bottom: 5px;
     }
 
     button#submit {
