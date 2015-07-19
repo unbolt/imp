@@ -13,9 +13,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    recent topics here...
-                </div>
+                @foreach($latest_posts as $post)
+                     <div class="col-md-3">
+                         {{ $post->title }}
+                     </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-md-12">

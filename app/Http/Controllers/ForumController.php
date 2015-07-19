@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Session;
+use DB;
 use App\Role;
 use App\Permission;
 use App\Forum;
@@ -39,7 +40,31 @@ class ForumController extends Controller
             }
         });
 
-        return view('forums.forum')->withForums($filteredForums);
+        $latestPosts = collect();
+        $offset = 0;
+        $postcount = 0;
+
+        while( ($postcount <= 3) ) {
+
+            if($offset !== 0){
+                $post = Post::topic()->skip($offset)->orderBy('created_at', 'DESC')->first();
+            } else {
+                $post = Post::topic()->orderBy('created_at', 'DESC')->first();
+            }
+
+            if($post) {
+                $post_permission = 'access-forum-'.$post->forum_id;
+
+                if(in_array($post_permission, $GLOBALS['canAccess'])){
+                    $latestPosts->push($post);
+                    $postcount++;
+                }
+
+                $offset++;
+            }
+        }
+
+        return view('forums.forum')->withForums($filteredForums)->withLatestPosts($latestPosts);
 
     }
 
