@@ -85,11 +85,23 @@
                     </div>
                     <div class="col-md-1 text-center">
                         <h3>{{ $thread->view_count }}</h3>
-                        <p class="count-description">views</p>
+                        <p class="count-description">
+                            @if( $thread->view_count == 1 )
+                                view
+                            @else
+                                views
+                            @endif
+                        </p>
                     </div>
                     <div class="col-md-1 text-center">
                         <h3>{{ $thread->reply_count }}</h3>
-                        <p class="count-description">replies</p>
+                        <p class="count-description">
+                            @if( $thread->reply_count == 1 )
+                                reply
+                            @else
+                                replies
+                            @endif
+                        </p>
                     </div>
                     <div class="col-md-4">
                         <div class="latest-reply">

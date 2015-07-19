@@ -86,6 +86,10 @@
             .badge {
                 background-color: red;
             }
+
+            .latest-reply {
+                border-color: red;
+            }
         }
 
         &.thread-sticky {
@@ -97,6 +101,10 @@
 
             .badge {
                 background-color: green;
+            }
+
+            .latest-reply {
+                border-color: green;
             }
         }
     }
