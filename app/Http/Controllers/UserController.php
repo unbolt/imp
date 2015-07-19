@@ -92,6 +92,12 @@ class UserController extends Controller
 
             // Check if it has changed
             if($request->character_name != $logged_in_user->character_name) {
+
+                // Check it's unique
+                $this->validate($request, [
+                    'character_name' => 'unique:users,character_name,'.$logged_in_user->id
+                ]);
+
                 $user->character_name = $request->character_name;
 
                 $lodestone = New Lodestone;
