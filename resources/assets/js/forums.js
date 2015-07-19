@@ -109,6 +109,7 @@ $(function () {
             // Process the markdown
             var html = converter.makeHtml(content);
             $(".post-content-"+postId).html(html);
+            fPopLoadItem();
 
 
             // Slide down the post
