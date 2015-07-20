@@ -83,7 +83,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function getDisplayProfileHeaderAttribute() {
-        return '/headers/'.$this->profile_header;
+        if($this->profile_header) {
+            return '/headers/'.$this->profile_header;
+        } else {
+            return null;
+        }    
     }
 
 
