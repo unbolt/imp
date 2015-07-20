@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $table = 'users';
 
     // Add in our virtual fields
-    protected $appends = array('character_title', 'character_avatar', 'character_portrait');
+    protected $appends = array('character_title', 'character_avatar', 'character_portrait', 'profile_slug', 'display_profile_header');
 
     /**
      * The attributes that are mass assignable.
@@ -73,6 +73,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getCharacterPortraitAttribute() {
         return $this->getOrSetCache('portrait', $this->character_id);
     }
+
+    public function getProfileSlugAttribute() {
+        if($this->character_name) {
+            return str_replace(' ', '', $this->character_name);
+        } else {
+            return $this->name;
+        }
+    }
+
+    public function getDisplayProfileHeaderAttribute() {
+        return '/headers/'.$this->profile_header;
+    }
+
 
     public function getPermissions() {
         $roles = $this->roles;

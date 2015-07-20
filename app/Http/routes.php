@@ -41,9 +41,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Update signature
     Route::post('dashboard/signature', 'UserController@updateSignature');
+
+    // Update user header image
+    Route::post('dashboard/updateheader', 'UserController@updateHeader');
 });
 
+// Update online status - called via ajax
 Route::get('user/updateonline', 'UserController@updateOnline');
+// Display user profile
+Route::get('profile/{id}/{profileslug}', 'UserController@show');
 
 /* GROUP RELATED ROUTES */
 // TODO: Put this behind entrust

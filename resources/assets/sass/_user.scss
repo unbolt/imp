@@ -36,6 +36,15 @@
         border-top-right-radius: 5px;
     }
 
+    .edit-background {
+        position: relative;
+        float: right;
+        color: $light;
+        padding-right: 10px;
+        padding-top: 10px;
+        height: 30px;
+    }
+
     .row {
         z-index: 2;
     }
@@ -53,7 +62,7 @@
     }
 
     .user-details {
-        padding-top: 200px;
+        padding-top: 170px;
 
         .user-title {
             color: lighten($dark, 50%);

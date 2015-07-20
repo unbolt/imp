@@ -11,4 +11,15 @@ $(function () {
         e.preventDefault();
         $('#character-config').tab('show');
     });*/
+
+    // Enable the profile banner upload magic
+    $('.upload-form').hide();
+    $('.edit-header-icon').click(function() {
+        $('.upload-form').show();
+        $(this).hide();
+    });
+    $('.hide-edit-header-icon').click(function() {
+        $('.upload-form').hide();
+        $('.edit-header-icon').show();
+    });
 })

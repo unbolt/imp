@@ -60,6 +60,15 @@
                     @endforeach
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Users Online</h2>
+                    <hr />
+                    @foreach($online_users as $user)
+                        <a href="/profile/{{ $user->id }}/{{ $user->profile_slug }}">{{ $user->character_name }}</a>
+                    @endforeach
+                </div>
+            </div>
         </section>
     </div>
 @stop

@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use DB;
+use Carbon;
 use App\Role;
 use App\Permission;
 use App\Forum;
 use App\Post;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -51,9 +53,13 @@ class ForumController extends Controller
             }
         }
 
+        // Get the online users
+        $fiveMinutesAgo = Carbon::now()->subMinutes(5);
+        $usersOnline = User::where('active_at', '>=', $fiveMinutesAgo)->orderBy('active_at', 'DESC')->get();
+
         $latestPosts = Post::topic()->with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(4)->get();
 
-        return view('forums.forum')->withForums($filteredForums)->withLatestPosts($latestPosts);
+        return view('forums.forum')->withForums($filteredForums)->withLatestPosts($latestPosts)->withOnlineUsers($usersOnline);
 
     }
 

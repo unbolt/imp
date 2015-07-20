@@ -154,6 +154,39 @@ class UserController extends Controller
 
     }
 
+    // Update header
+    public function updateHeader(Request $request) {
+
+        $this->validate($request, [
+                'background_image' => 'required|image'
+            ]);
+
+        $logged_in_user = Auth::user();
+
+        if($request->file('background_image')->isValid()) {
+            // We have a file uploaded, and it's valid
+            // Generate a name for it
+            $filename = $logged_in_user->id.'-header.'.$request->file('background_image')->guessExtension();
+            $directory = 'headers/';
+
+            if($request->file('background_image')->move($directory, $filename)) {
+                // Update the users profile image
+                $logged_in_user->profile_header = $filename.'?'.time();
+                if($logged_in_user->save()) {
+                    Session::flash('alert-success', 'Header updated.');
+                } else {
+                    Session::flash('alert-warning', 'Could not save header.');
+                }
+            } else {
+                Session::flash('alert-warning', 'Could not upload header.');
+            }
+        } else {
+            Session::flash('alert-warning', 'Header was not valid.');
+        }
+
+        return back();
+    }
+
     // Update online status
     public function updateOnline(Request $request) {
         $logged_in_user = Auth::user();
@@ -222,7 +255,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // Show a users profile page
+        $user = User::find($id);
+
+        return view('user.profile')->withUser($user);
     }
 
     /**
