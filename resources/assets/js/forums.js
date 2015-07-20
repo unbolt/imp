@@ -46,12 +46,9 @@ $(function () {
                                 str = str.replace(value, constructed);
                                 $(this).html(str);
                             });
-
+                            fPopLoadItem();
                         }
-
-                    })
-
-                    //alert( index + ": " + value );
+                    });
                 });
             }
         });
@@ -92,7 +89,7 @@ $(function () {
 
         $('#live-preview-thread-content').html( html );
 
-        fPopLoadItem();
+        // fPopLoadItem();
     });
 
     $('#post-content').keyup(function (e) {
@@ -103,17 +100,16 @@ $(function () {
 
         $('#live-preview-post-content').html( html );
 
-        fPopLoadItem();
+        // fPopLoadItem();
     });
 
     $('.process-markdown').each(function() {
         str = $(this).html();
         html = converter.makeHtml(str);
         $(this).html( html );
-        fPopLoadItem();
     });
 
-    // Process the usernames
+    // Process the usernames - this also calls the tooltip functionality
     processUsernames();
 
     // Automatically submit the admin mod controls when changed
@@ -171,8 +167,6 @@ $(function () {
             // Process the markdown
             var html = converter.makeHtml(content);
             $(".post-content-"+postId).html(html);
-            fPopLoadItem();
-            processUsernames();
 
             // Slide down the post
             $('div.post-content-'+postId).toggle();
@@ -188,4 +182,5 @@ $(function () {
         });
 
     });
+
 });
