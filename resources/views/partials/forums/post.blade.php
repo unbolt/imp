@@ -3,7 +3,7 @@
         <div class="post-user-info-container" style="background-image: url('{{ $post->user->character_portrait or '/img/profile_avatar_default.png' }}');">
 
             <div class="user-name">
-                {{ $post->user->character_name or $post->user->name }}
+                <a href="/profile/{{$post->user->id}}/{{$post->user->profile_slug}}">{{ $post->user->character_name or $post->user->name }}</a>
             </div>
 
             <div class="user-icon">

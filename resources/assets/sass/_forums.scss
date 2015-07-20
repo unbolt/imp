@@ -239,6 +239,15 @@
         text-align: center;
         color: #E2EBF5;
         text-shadow: -1px 0 3px #217AA2, 0 1px 3px #217AA2, 1px 0 3px #217AA2, 0 -1px 3px #217AA2;
+
+        a {
+            color: #E2EBF5;
+
+            &:hover {
+                text-decoration: none;
+                color: #E2EBF5;
+            }
+        }
     }
 
     .user-icon {
