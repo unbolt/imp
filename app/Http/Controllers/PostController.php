@@ -113,6 +113,7 @@ class PostController extends Controller
         // Update the threads status between stick/unstick/announce/unannounce
 
         $post = Post::find($request->post_id);
+        $post->timestamps = false;
 
         if($request->mod_thread == 'unstick') {
             $post->sticky = null;

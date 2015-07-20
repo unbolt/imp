@@ -40,29 +40,18 @@ class ForumController extends Controller
             }
         });
 
-        $latestPosts = collect();
-        $offset = 0;
-        $postcount = 0;
-
-        while( ($postcount <= 3) ) {
-
-            if($offset !== 0){
-                $post = Post::topic()->with('forum')->skip($offset)->orderBy('created_at', 'DESC')->first();
-            } else {
-                $post = Post::topic()->with('forum')->orderBy('created_at', 'DESC')->first();
-            }
-
-            if($post) {
-                $post_permission = 'access-forum-'.$post->forum_id;
-
-                if(in_array($post_permission, $GLOBALS['canAccess'])){
-                    $latestPosts->push($post);
-                    $postcount++;
+        // Filter the canAccess array to get the list of forum IDs the user can access
+        $accessCollection = collect();
+        foreach($canAccess as $hasAccess) {
+            if (strpos($hasAccess, 'access-forum-') !== false) {
+                $access = explode('-', $hasAccess);
+                if($access[2]) {
+                    $accessCollection->push($access[2]);
                 }
-
-                $offset++;
             }
         }
+
+        $latestPosts = Post::topic()->with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(4)->get();
 
         return view('forums.forum')->withForums($filteredForums)->withLatestPosts($latestPosts);
 
