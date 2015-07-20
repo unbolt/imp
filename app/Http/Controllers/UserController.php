@@ -166,6 +166,22 @@ class UserController extends Controller
         return response()->json(['success' => 'true'], 200);
     }
 
+    // Query the username and return the details
+    public function queryUsername($username) {
+        // Check if we have a first name only, or if we have a FirstLast
+        $check_username = preg_split('/(?=[A-Z])/',$username);
+
+        if(isset($check_username[2])) {
+            // We have a surname
+            $format_charname = $check_username[1] . ' ' . $check_username[2];
+            $get_user = User::where('character_name', '=', $check_username[1].' '.$check_username[2])->select('id', 'name', 'character_name')->first();
+        } else {
+            $get_user = User::where('character_name', 'like', $username.'%')->select('id', 'name', 'character_name')->first();
+        }
+
+        return response()->json(['user' => $get_user], 200);
+    }
+
 
     /**
      * Display a listing of the resource.

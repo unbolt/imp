@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('thread/{id}/{slug}', 'PostController@show');
     Route::post('post/create', 'PostController@store');
     Route::post('post/edit', 'PostController@update');
+    Route::get('users/username/{username}', 'UserController@queryUsername');
 });
 
 /* THREAD ADMIN ROUTES */

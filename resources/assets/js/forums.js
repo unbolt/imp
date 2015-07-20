@@ -1,4 +1,62 @@
 $(function () {
+
+    // Function to check for a username and then check against the users to automatically link to their profile
+    function processUsernames() {
+
+        $('.process-markdown').each(function() {
+            str = $(this).html();
+
+            // Check if there are any @ mentions in the post text
+            var res = str.match(/@([a-z\d_\s]+)/ig);
+
+            // If we have any hits
+            if(res) {
+                // Loop through them
+                $.each(res, function( index, value ) {
+                    // Get the user details from the server
+
+                    // Trim off the @
+                    var characterName = value.substring(1);
+
+                    // Query the username
+                    $.ajax({
+                        type        : 'GET',
+                        url         : '/users/username/'+characterName,
+                        dataType    : 'json',
+                        encode      : true
+                    })
+                    .done(function(data) {
+
+                        if(data.user) {
+                            // Successfully found user
+                            // Generate the link to their profile
+                            if(data.user.character_name) {
+                                var username = data.user.character_name.replace(' ', '');
+                            } else {
+                                var username = data.user.name;
+                            }
+
+                            var url = '/profile/'+data.user.id+'/'+username;
+                            // Construct the link
+                            var constructed = '<a class="badge username-mention" href="'+url+'">&#64;'+username+'</a> ';
+
+                            // Grab the current text
+                            $('.process-markdown').each(function() {
+                                str = $(this).html();
+                                str = str.replace(value, constructed);
+                                $(this).html(str);
+                            });
+
+                        }
+
+                    })
+
+                    //alert( index + ": " + value );
+                });
+            }
+        });
+    }
+
     // Autosize the text area input
     autosize($('.post-content-textarea'));
 
@@ -25,6 +83,7 @@ $(function () {
 
     // Update thread content
     var converter = new showdown.Converter();
+
     $('#thread-content').keyup(function (e) {
         // Process the markdown
         str = $(this).val();
@@ -53,6 +112,9 @@ $(function () {
         $(this).html( html );
         fPopLoadItem();
     });
+
+    // Process the usernames
+    processUsernames();
 
     // Automatically submit the admin mod controls when changed
     $('#mod_controls').change( function () {
@@ -110,7 +172,7 @@ $(function () {
             var html = converter.makeHtml(content);
             $(".post-content-"+postId).html(html);
             fPopLoadItem();
-
+            processUsernames();
 
             // Slide down the post
             $('div.post-content-'+postId).toggle();
