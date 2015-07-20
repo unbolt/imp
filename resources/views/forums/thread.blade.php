@@ -9,11 +9,17 @@
             <div class="row">
                 <div class="col-md-8">
                     <h2>{{ $thread->title }}</h2>
-                    <h3><a href="/forums">Forums</a> / <a href="/forums/{{ $thread->forum->slug }}">{{ $thread->forum->name }}</a></h3>
-
                 </div>
                 <div class="col-md-4 text-right forum-form">
                     <a class="btn btn-primary post-reply" href="#post-reply">Post Reply</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3><a href="/forums">Forums</a> / <a href="/forums/{{ $thread->forum->slug }}">{{ $thread->forum->name }}</a></h3>
+                </div>
+                <div class="col-md-4 text-right">
+                    {!! $replies->render() !!}
                 </div>
             </div>
             <div class="row">
@@ -23,12 +29,20 @@
             </div>
 
             <!-- Display the opening post -->
-            @include('partials.forums.post', ['post' => $thread])
+            <div class="opening-post">
+                @include('partials.forums.post', ['post' => $thread])
+            </div>
 
             <!-- Loop through the replies -->
             @foreach ($replies as $reply)
                 @include('partials.forums.post', ['post' => $reply])
             @endforeach
+
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    {!! $replies->render() !!}
+                </div>
+            </div>
 
             @if(Auth::user()->hasRole('administrators'))
                 <div class="row">

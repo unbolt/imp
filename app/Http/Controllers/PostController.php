@@ -98,7 +98,7 @@ class PostController extends Controller
         $post = Post::find($id);
 
         // Get the replies
-        $replies = Post::where('thread_id', $id)->get();
+        $replies = Post::where('thread_id', $id)->paginate(15);
 
         // Add a view to this thread
         $view = New ThreadView;

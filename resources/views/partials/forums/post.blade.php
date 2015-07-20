@@ -19,16 +19,23 @@
     </div>
     <div class="col-md-10">
         <div class="post-content">
-            <div class="posted-at">
-                Posted {!! Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans(); !!}
-                @if($post->user->id === Auth::user()->id)
-                    &nbsp;<span class="glyphicon glyphicon-pencil edit-button" aria-hidden="true"></span>
-                @endif
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="posted-at">
+                        Posted {!! Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans(); !!}
+                        @if($post->user->id === Auth::user()->id)
+                            &nbsp;<span class="glyphicon glyphicon-pencil edit-button" aria-hidden="true"></span>
+                        @endif
 
-                @if($post->created_at != $post->updated_at)
-                    &nbsp;<em>&laquo; Last Edited {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!} &raquo;</em>
-                @endif
+                        @if($post->created_at != $post->updated_at)
+                            &nbsp;<em>&laquo; Last Edited {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!} &raquo;</em>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-sm-6 text-right">
+                </div>
             </div>
+
             <div class="process-markdown post-content-main post-content-{{ $post->id }}">{{ $post->content }}</div>
             @if($post->user->id === Auth::user()->id)
                 <div class="edit-post edit-post-{{ $post->id }}">
@@ -49,6 +56,7 @@
                     </div>
                 </div>
             @endif
+
             <hr/>
 
             <div class="signature">

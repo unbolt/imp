@@ -2,6 +2,13 @@
     margin-top: 20px;
     background-color: $light;
     padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.pagination {
+    margin: 10px 0px;
+    font-size: 0.8em;
 }
 
 .recent-topic {
@@ -35,6 +42,40 @@
         text-decoration: none;
         background-color: darken($highlight, 10%);
     }
+
+    &.recent-general-chat {
+        background-color: $forum1color;
+
+        &:hover {
+            background-color: darken($forum1color, 10%);
+        }
+    }
+
+    &.recent-economy-crafting-gathering {
+        background-color: $forum2color;
+
+        &:hover {
+            background-color: darken($forum2color, 10%);
+        }
+    }
+
+    &.recent-combat-dungeons-raids {
+        background-color: $forum3color;
+
+        &:hover {
+            background-color: darken($forum3color, 10%);
+        }
+    }
+
+    &.recent-call-for-help {
+        background-color: $forum4color;
+
+        &:hover {
+            background-color: darken($forum4color, 10%);
+        }
+    }
+
+
 }
 
 .count-description {
@@ -72,7 +113,45 @@
         border-radius: 28px;
         background-color: $highlight;
     }
+
+    // Customise styles for individual forums here based on their slugs
+    &.row-general-chat {
+        .forum-icon {
+            background-color: $forum1color;
+        }
+        .latest-reply {
+            border-color: $forum1color;
+        }
+    }
+
+    &.row-economy-crafting-gathering {
+        .forum-icon {
+            background-color: $forum2color;
+        }
+        .latest-reply {
+            border-color: $forum2color;
+        }
+    }
+
+    &.row-combat-dungeons-raids {
+        .forum-icon {
+            background-color: $forum3color;
+        }
+        .latest-reply {
+            border-color: $forum3color;
+        }
+    }
+
+    &.row-call-for-help {
+        .forum-icon {
+            background-color: $forum4color;
+        }
+        .latest-reply {
+            border-color: $forum4color;
+        }
+    }
 }
+
 
 .thread-list {
     .thread-row {
@@ -189,7 +268,17 @@
     }
 }
 
+.opening-post {
+    > hr {
+            border-top: 4px solid $highlight;
+    }
+}
+
 .post-content {
+    .glyphicon {
+        cursor: pointer;
+    }
+
     .posted-at {
         color: lighten($dark, 50%);
         font-size: 0.7em;
