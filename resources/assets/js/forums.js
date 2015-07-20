@@ -38,7 +38,7 @@ $(function () {
 
                             var url = '/profile/'+data.user.id+'/'+username;
                             // Construct the link
-                            var constructed = '<a class="badge username-mention" href="'+url+'">&#64;'+username+'</a> ';
+                            var constructed = '<a class="badge username-mention" href="'+url+'">&raquo;&nbsp;'+username+'</a> ';
 
                             // Grab the current text
                             $('.process-markdown').each(function() {
