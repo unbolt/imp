@@ -7,7 +7,7 @@ $(function () {
             str = $(this).html();
 
             // Check if there are any @ mentions in the post text
-            var res = str.match(/@([a-z\d']+)/ig);
+            var res = str.match(/@([a-z\d']+\s)/ig);
 
             // If we have any hits
             if(res) {
