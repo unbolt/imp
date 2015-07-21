@@ -38,6 +38,11 @@ h4 {
     font-size: 18px;
 }
 
+.date {
+    color: lighten($dark, 50%);
+    font-size: 0.8em;
+}
+
 /* Import stylesheets */
 
 @import 'tooltips';

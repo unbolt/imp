@@ -23,6 +23,20 @@
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <h3>Welcome back!</h3>
                             <hr/>
+                            @foreach($mention_posts as $post)
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="user-avatar-round" style="background-image: url('{{ $post->user->character_avatar }}');"></div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="date">
+                                            {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!}
+                                        </div>
+                                        <a href="/thread/{{ $post->user->id }}/{{ $post->user->profile_slug }}">{{ $post->user->character_name or $post->user->name }}</a> mentioned you in <a href="/thread/{{ $post->thread->id }}/{{ $post->thread->slug }}">{{ $post->thread->title }}</a>
+                                    </div>
+                                </div>
+                                <hr/>
+                            @endforeach
                         </div>
                         <div role="tabpanel" class="tab-pane" id="character-config">
                             <h3>Profile Configuration</h3>

@@ -11,6 +11,7 @@ use App\Role;
 use App\Permission;
 use App\User;
 use App\Forum;
+use App\Post;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Lodestone;
@@ -46,6 +47,21 @@ class UserController extends Controller
                 'astrologian' => 'Astrologian'
             );
 
+            // Have a look for any posts that mention the user
+            $mention_posts = collect();
+
+            if($user->character_name) {
+                $character_name = explode(' ', $user->character_name);
+
+                $mention_posts = Post::
+                    with('thread')
+                    ->with('user')
+                    ->where('content', 'like', '%@'.$character_name[0].'%')
+                    ->orWhere('content', 'like', '%@'.$character_name[0].$character_name[1].'%')
+                    ->limit(5)
+                    ->get();
+            }
+
 
 
 
@@ -74,10 +90,21 @@ class UserController extends Controller
 
             $forums_list = Forum::orderBy('display_order', 'asc')->get();
 
-            return view('user.dashboard')->withUser($user)->withJobList($job_list)->withGroupList($group_list)->withGroupArray($group_array)->withPermissionArray($permission_array)->withUsersArray($users_array)->withForumList($forums_list);
+            return view('user.dashboard')
+                ->withUser($user)
+                ->withMentionPosts($mention_posts)
+                ->withJobList($job_list)
+                ->withGroupList($group_list)
+                ->withGroupArray($group_array)
+                ->withPermissionArray($permission_array)
+                ->withUsersArray($users_array)
+                ->withForumList($forums_list);
 
         } else {
-            return view('user.dashboard')->withUser($user)->withJobList($job_list);
+            return view('user.dashboard')
+                    ->withUser($user)
+                    ->withJobList($job_list)
+                    ->withMentionPosts($mention_posts);
         }
     }
 

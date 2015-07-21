@@ -1,19 +1,29 @@
-.user-image-avatar {
-    width: 100%;
-    padding-top: 100%;
+.user-avatar-base {
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 }
 
+.user-image-avatar {
+    @extend .user-avatar-base;
+    width: 100%;
+    padding-top: 100%;
+}
+
 .user-avatar-tiny {
+    @extend .user-avatar-base;
     width: 20px;
     height: 20px;
     border-radius: 10px;
     display: inline-block;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+}
+
+.user-avatar-round {
+    @extend .user-avatar-base;
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+    padding-top: 100%;
 }
 
 

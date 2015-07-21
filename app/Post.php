@@ -26,7 +26,7 @@ class Post extends Model
     // RELATIONSHIPS
 
     public function thread() {
-        return $this->belongsTo('App\Post', 'id', 'thread_id');
+        return $this->belongsTo('App\Post', 'thread_id', 'id');
     }
 
     public function replies() {
