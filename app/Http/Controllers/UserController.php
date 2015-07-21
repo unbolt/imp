@@ -58,6 +58,7 @@ class UserController extends Controller
                     ->with('user')
                     ->where('content', 'like', '%@'.$character_name[0].'%')
                     ->orWhere('content', 'like', '%@'.$character_name[0].$character_name[1].'%')
+                    ->orderBy('created_at', 'DESC')
                     ->limit(5)
                     ->get();
             }
