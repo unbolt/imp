@@ -32,7 +32,7 @@
                                         <div class="date">
                                             {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!}
                                         </div>
-                                        <a href="/thread/{{ $post->user->id }}/{{ $post->user->profile_slug }}">{{ $post->user->character_name or $post->user->name }}</a> mentioned you in <a href="/thread/{{ $post->thread->id }}/{{ $post->thread->slug }}">{{ $post->thread->title }}</a>
+                                        <a href="/profile/{{ $post->user->id }}/{{ $post->user->profile_slug }}">{{ $post->user->character_name or $post->user->name }}</a> mentioned you in <a href="/thread/{{ $post->thread->id }}/{{ $post->thread->slug }}">{{ $post->thread->title }}</a>
                                     </div>
                                 </div>
                                 <hr/>
