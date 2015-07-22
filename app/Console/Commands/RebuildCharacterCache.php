@@ -79,6 +79,9 @@ class RebuildCharacterCache extends Command
                 if($character->name !== $user->character_name) {
                     $this->info('Character name needs updating!');
                     $user->character_name = $character->name;
+                    if($user->save()) {
+                        $this->info('Character name has been updated.');
+                    }
                 } else {
                     $this->info('Character name has not changed on Lodestone.');
                 }
