@@ -66,19 +66,7 @@ class UserController extends Controller
             // Get the latest topics
 
             // Get the users permissions
-            GLOBAL $canAccess;
-            $canAccess = $user->getPermissions();
-
-            // Filter the canAccess array to get the list of forum IDs the user can access
-            $accessCollection = collect();
-            foreach($canAccess as $hasAccess) {
-                if (strpos($hasAccess, 'access-forum-') !== false) {
-                    $access = explode('-', $hasAccess);
-                    if($access[2]) {
-                        $accessCollection->push($access[2]);
-                    }
-                }
-            }
+            $accessCollection = $user->forumAccess;
 
             $latest_posts = Post::
                 with('thread')

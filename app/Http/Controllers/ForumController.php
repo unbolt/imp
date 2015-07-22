@@ -27,39 +27,28 @@ class ForumController extends Controller
     {
         // Display the forum index
 
-        // Get the users permissions
-        GLOBAL $canAccess;
-        $canAccess = Auth::user()->getPermissions();
+        // Get the list of forums the user can access
+        $accessCollection = Auth::user()->forumAccess;
 
         // Get the list of forums the user has access to
-        $forums = Forum::all();
+        $forums = Forum::
+                    whereIn('id', $accessCollection)
+                    ->orderBy('display_order', 'ASC')
+                    ->get();
 
-        $filteredForums = $forums->filter(function ($item) {
-            $forum_permission = 'access-forum-'.$item->id;
-
-            if(in_array($forum_permission, $GLOBALS['canAccess'])) {
-                return $item;
-            }
-        });
-
-        // Filter the canAccess array to get the list of forum IDs the user can access
-        $accessCollection = collect();
-        foreach($canAccess as $hasAccess) {
-            if (strpos($hasAccess, 'access-forum-') !== false) {
-                $access = explode('-', $hasAccess);
-                if($access[2]) {
-                    $accessCollection->push($access[2]);
-                }
-            }
-        }
-
-        $latestPosts = Post::topic()->with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(4)->get();
+        $latestPosts = Post::
+                        topic()
+                        ->with('forum')
+                        ->whereIn('forum_id', $accessCollection)
+                        ->orderBy('created_at', 'DESC')
+                        ->limit(4)
+                        ->get();
 
         // Get the online users
         $fiveMinutesAgo = Carbon::now()->subMinutes(5);
         $usersOnline = User::where('active_at', '>=', $fiveMinutesAgo)->orderBy('active_at', 'DESC')->get();
 
-        return view('forums.forum')->withForums($filteredForums)->withLatestPosts($latestPosts)->withOnlineUsers($usersOnline);
+        return view('forums.forum')->withForums($forums)->withLatestPosts($latestPosts)->withOnlineUsers($usersOnline);
 
     }
 

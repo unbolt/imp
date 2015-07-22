@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $table = 'users';
 
     // Add in our virtual fields
-    protected $appends = array('character_title', 'character_avatar', 'character_portrait', 'profile_slug', 'display_profile_header');
+    protected $appends = array('character_title', 'character_avatar', 'character_portrait', 'profile_slug', 'display_profile_header', 'forum_access');
 
     /**
      * The attributes that are mass assignable.
@@ -87,7 +87,25 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return '/headers/'.$this->profile_header;
         } else {
             return null;
-        }    
+        }
+    }
+
+    public function getForumAccessAttribute() {
+        // Get the users permissions
+        $canAccess = $this->getPermissions();
+
+        // Filter the canAccess array to get the list of forum IDs the user can access
+        $accessCollection = collect();
+        foreach($canAccess as $hasAccess) {
+            if (strpos($hasAccess, 'access-forum-') !== false) {
+                $access = explode('-', $hasAccess);
+                if($access[2]) {
+                    $accessCollection->push($access[2]);
+                }
+            }
+        }
+
+        return $accessCollection;
     }
 
 
