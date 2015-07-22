@@ -25,7 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        $schedule->command('character:cache')->dailyAt('09:45')->emailOutputTo('dan@unbo.lt');
     }
 }
