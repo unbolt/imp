@@ -31,7 +31,7 @@
                     <h1>Gallery</h1>
                 </div>
                 <div class="col-md-6 text-right">
-                    @if(Auth::user()->hasPermission('upload-screenshot'))
+                    @if(Auth::user()->can('upload-screenshot'))
                         <div class="gallery-upload-form">
                             <form enctype="multipart/form-data" action="/gallery/upload" class="form-inline" method="POST">
                                  {!! csrf_field() !!}
