@@ -70,7 +70,7 @@
                     <div class="panel panel-dark">
                         <div class="panel-heading">Recent Posts</div>
                         <ul class="list-group">
-                            @foreach($latest_posts as $post)
+                            @foreach($latest_posts as $recent_post)
                                 <li class="list-group-item">
                                     <div class="date">
                                         {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!}

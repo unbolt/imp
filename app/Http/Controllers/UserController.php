@@ -80,7 +80,7 @@ class UserController extends Controller
                 }
             }
 
-            $latest_posts = Post::with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(7)->get();
+            $latest_posts = Post::with('forum')->with('user')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(7)->get();
 
 
 
