@@ -26,11 +26,11 @@ class Post extends Model
     // RELATIONSHIPS
 
     public function thread() {
-        return $this->belongsTo('App\Post', 'thread_id', 'id');
+        return $this->belongsTo('App\Post', 'thread_id');
     }
 
     public function replies() {
-        return $this->hasMany('App\Post', 'thread_id', 'id');
+        return $this->hasMany('App\Post', 'id', 'thread_id');
     }
 
     public function user() {
