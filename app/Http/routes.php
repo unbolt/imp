@@ -89,5 +89,5 @@ Route::group(['middleware' => 'auth'], function () {
 /* GALLERY RELATED ROUTES */
 Route::get('gallery', 'ScreenshotController@index');
 Route::group(['middleware' => 'auth'], function() {
-    Route::post('gallery/upload', 'Screenshotcontroller@store');
+    Route::post('gallery/upload', 'ScreenshotController@store');
 });
