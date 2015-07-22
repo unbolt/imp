@@ -12,7 +12,9 @@
         "doctrine/dbal": "2.4.2",
         "oriceon/toastr-5-laravel": "dev-master",
         "laravelcollective/html": "5.1.*",
-        "nesbot/carbon": "~1.20"
+        "nesbot/carbon": "~1.20",
+        "intervention/image": "~2.3",
+        "intervention/imagecache": "~2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

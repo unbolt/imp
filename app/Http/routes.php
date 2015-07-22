@@ -84,3 +84,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::post('thread/controls', 'PostController@updateStatus');
 });
+
+
+/* GALLERY RELATED ROUTES */
+Route::get('gallery', 'ScreenshotController@index');
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('gallery/upload', 'Screenshotcontroller@store');
+});

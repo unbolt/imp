@@ -14,11 +14,11 @@
                     <div class="col-md-6">
                         <nav>
                             <ul>
-                                <li>Home</li>
-                                <li>About</li>
-                                <li>Roster</li>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/roster">Roster</a></li>
                                 <li><a href="/forums">Forums</a></li>
-                                <li>Gallery</li>
+                                <li><a href="/gallery">Gallery</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -38,7 +38,7 @@
                                 </ul>
                             @else
                                 <ul>
-                                    <li>Login</li>
+                                    <li><a href="/login">Login</a></li>
                                 </ul>
                             @endif
                         </div>
