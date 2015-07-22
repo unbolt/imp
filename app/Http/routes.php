@@ -44,6 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Update user header image
     Route::post('dashboard/updateheader', 'UserController@updateHeader');
+
+    // Update social media
+    Route::post('dashboard/socialmedia', 'UserController@updateSocialMedia');
 });
 
 // Update online status - called via ajax

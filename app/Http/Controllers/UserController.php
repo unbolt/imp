@@ -195,6 +195,24 @@ class UserController extends Controller
 
     }
 
+    // Update social media
+    public function updateSocialMedia(Request $request) {
+        $logged_in_user = Auth::user();
+        $user = User::find($logged_in_user->id);
+        $user->steam = $request->steam;
+        $user->twitter = $request->twitter;
+        $user->facebook = $request->facebook;
+
+        if($user->save()) {
+            Session::flash('alert-success', 'Social media updated.');
+        } else {
+            Session::flash('alert-warning', 'Could not update social media.');
+        }
+
+        return back();
+
+    }
+
     // Update header
     public function updateHeader(Request $request) {
 

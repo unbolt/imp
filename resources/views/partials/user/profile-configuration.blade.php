@@ -60,4 +60,38 @@
       </div>
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="profileHeadingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#profileAccordion" href="#profileThree" aria-expanded="false" aria-controls="profileThree">
+          Social Media
+        </a>
+      </h4>
+    </div>
+    <div id="profileThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="profileThree">
+      <div class="panel-body">
+          <div class="dashboard-form">
+              <form method="POST" action="/dashboard/socialmedia">
+                  {!! csrf_field() !!}
+
+                  <div>
+                      <input type="text" name="twitter" value="{{ $user->twitter }}" placeholder="Twitter Handle" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                  </div>
+
+                  <div>
+                      <input type="text" name="facebook" value="{{ $user->facebook }}" placeholder="Facebook" class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                  </div>
+
+                  <div>
+                      <input type="text" name="steam" value="{{ $user->steam }}" placeholder="Steam Profile " class="form-control" tabindex="1" autocomplete="off" autocorrect="off" spellcheck="false">
+                  </div>
+
+                  <div>
+                      <button id="submit" type="submit" class="btn btn-primary">Update Social Media</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
