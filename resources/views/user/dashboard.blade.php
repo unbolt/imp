@@ -73,10 +73,10 @@
                             @foreach($latest_posts as $recent_post)
                                 <li class="list-group-item">
                                     <div class="date">
-                                        {!! Carbon::createFromTimeStamp(strtotime($post->updated_at))->diffForHumans(); !!}
+                                        {!! Carbon::createFromTimeStamp(strtotime($recent_post->updated_at))->diffForHumans(); !!}
                                     </div>
                                     <div>
-                                        <a href="/profile/{{ $post->user->id }}/{{ $post->user->profile_slug }}">{{ $post->user->character_name or $post->user->name }}</a> posted in <a href="/thread/{{ $post->thread->id }}/{{ $post->thread->slug }}">{{ $post->thread->title }}</a>
+                                        <a href="/profile/{{ $recent_post->user->id }}/{{ $post->user->profile_slug }}">{{ $recent_post->user->character_name or $recent_post->user->name }}</a> posted in <a href="/thread/{{ $recent_post->thread->id }}/{{ $recent_post->thread->slug }}">{{ $recent_post->thread->title }}</a>
                                     </div>
                                 </li>
                             @endforeach
