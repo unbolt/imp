@@ -77,7 +77,7 @@
                                         {!! Carbon::createFromTimeStamp(strtotime($recent_post->updated_at))->diffForHumans(); !!}
                                     </div>
                                     <div>
-                                        <a href="/profile/{{ $recent_post->user->id or 'id' }}/{{ $recent_post->user->profile_slug or 'slug' }}">{{ $recent_post->user->character_name or $recent_post->user->name }}</a> posted in <a href="/thread/{{ $recent_post->thread->id or 'id' }}/{{ $recent_post->thread->slug or 'slug' }}">{{ $recent_post->thread->title or 'thread title' }}</a>
+                                        <a href="/profile/{{ $recent_post->user->id or 'id' }}/{{ $recent_post->user->profile_slug or 'slug' }}">{{ $recent_post->user->character_name or $recent_post->user->name }}</a> posted in <a href="/thread/{{ $recent_post->thread->id or $recent_post->id }}/{{ $recent_post->thread->slug or $recent_post->slug }}">{{ $recent_post->thread->title or $recent_post->title }}</a>
                                     </div>
                                 </li>
                             @endforeach
