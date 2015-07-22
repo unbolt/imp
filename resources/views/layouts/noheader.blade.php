@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
 
-        <title>@yield('title') - IMP</title>
+        <title>@yield('title') - Implausible Conclave - Free Company - Moogle</title>
 
         @include('partials.scripts')
     </head>
