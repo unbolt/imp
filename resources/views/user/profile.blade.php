@@ -30,7 +30,7 @@
                         <ul class="list-group">
                                 <li class="list-group-item">
                                     <div class="text-center">
-                                        <div class="process-markdown">{{ $user->signature }}</div>
+                                        <div class="process-markdown">{{ $user->signature or '_No signature set_' }}</div>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
