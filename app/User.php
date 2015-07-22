@@ -77,12 +77,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getJobsAttribute() {
         $jobs = $this->getOrSetCache('classjobs', $this->character_id);
         foreach($jobs as $i => $job) {
+            $jobs[$i]['percent'] = 0;
+
             $exp_level = $job['exp_level'];
             $exp_current = $job['exp_current'];
-            if($exp_level !== '0') {
+
+            if($exp_level !== '0' && $job['level'] !== 0) {
                 $jobs[$i]['percent'] = round(($exp_current/$exp_level)*100);
+            } else if ($job['level'] == 0){
+                    $jobs[$i]['percent'] = 0;
             } else {
-                $jobs[$i]['percent'] = 100;
+                    $jobs[$i]['percent'] = 100;
             }
 
         }
