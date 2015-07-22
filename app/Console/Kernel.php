@@ -25,6 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('character:cache')->dailyAt('09:57')->sendOutputTo('storage/logs/test.txt')->emailOutputTo('dan@unbo.lt');
+        $schedule->command('character:cache')->dailyAt('04:00');
     }
 }
