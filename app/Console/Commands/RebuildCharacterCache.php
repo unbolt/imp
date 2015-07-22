@@ -99,6 +99,18 @@ class RebuildCharacterCache extends Command
                     // Set portrait
                     Cache::put('portrait-'.$character->id, $character->portrait, $expiresAt);
 
+                    // Set jobs
+                    Cache::put('classjobs-'.$character->id, $character->classjobs, $expiresAt);
+
+                    // Set active class information
+                    Cache::put('activeClass-'.$character->id, $character->activeClass, $expiresAt);
+                    Cache::put('activeJob-'.$character->id, $character->activeJob, $expiresAt);
+                    Cache::put('activeLevel-'.$character->id, $character->activeLevel, $expiresAt);
+
+                    // Set mounts and minions
+                    Cache::put('mounts-'.$character->id, $character->mounts, $expiresAt);
+                    Cache::put('minions-'.$character->id, $character->minions, $expiresAt);
+
             } else {
                 $this->error('Could not find character '.$user->character_name);
             }

@@ -32,6 +32,78 @@
     padding: 10px;
 }
 
+.profile-stats {
+    margin-bottom: 20px;
+
+    .stat {
+        padding: 5px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 2em;
+        border-radius: 5px;
+        color: $light;
+
+        span {
+            font-size: 0.4em;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        &.posts {
+            background-color: $highlight;
+        }
+
+        &.screenshots {
+            background-color: $forum1color;
+        }
+
+        &.aether {
+            background-color: $forum4color;
+        }
+
+        &.achievements {
+            background-color: $forum3color;
+        }
+    }
+}
+
+/* JOB RELATED STUFF */
+
+.job-level {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.job-name {
+    font-size: 1.2em;
+    color: $highlight;
+
+    &.capped {
+        color: #cb8b22;
+    }
+}
+
+.exp {
+    font-size: 0.8em;
+    span {
+        font-weight: bold;
+    }
+}
+
+.progress {
+    height: 5px;
+    margin-bottom: 10px;
+    .progress-bar {
+        background-color: $highlight;
+
+        &.capped {
+            background-color: #cb8b22;
+        }
+    }
+}
+
+/* END JOB RELATED STUFF */
+
 
 .user-header {
     background-color: $light;

@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $table = 'users';
 
     // Add in our virtual fields
-    protected $appends = array('character_title', 'character_avatar', 'character_portrait', 'profile_slug', 'display_profile_header', 'forum_access');
+    protected $appends = array('character_title', 'character_avatar', 'character_portrait', 'profile_slug', 'display_profile_header', 'forum_access', 'jobs', 'activeclass', 'activejob', 'activelevel', 'mounts', 'minions');
 
     /**
      * The attributes that are mass assignable.
@@ -73,6 +73,43 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getCharacterPortraitAttribute() {
         return $this->getOrSetCache('portrait', $this->character_id);
     }
+
+    public function getJobsAttribute() {
+        $jobs = $this->getOrSetCache('classjobs', $this->character_id);
+        foreach($jobs as $i => $job) {
+            $exp_level = $job['exp_level'];
+            $exp_current = $job['exp_current'];
+            if($exp_level !== '0') {
+                $jobs[$i]['percent'] = round(($exp_current/$exp_level)*100);
+            } else {
+                $jobs[$i]['percent'] = 100;
+            }
+
+        }
+
+        return collect($jobs);
+    }
+
+    public function getActiveclassAttribute() {
+        return $this->getOrSetCache('activeClass', $this->character_id);
+    }
+
+    public function getActivejobAttribute() {
+        return $this->getOrSetCache('activeJob', $this->character_id);
+    }
+
+    public function getActivelevelAttribute() {
+        return $this->getOrSetCache('activeLevel', $this->character_id);
+    }
+
+    public function getMountsAttribute() {
+        return $this->getOrSetCache('mounts', $this->character_id);
+    }
+
+    public function getMinionsAttribute() {
+        return $this->getOrSetCache('minions', $this->character_id);
+    }
+
 
     public function getProfileSlugAttribute() {
         if($this->character_name) {
