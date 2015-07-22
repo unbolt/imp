@@ -63,6 +63,26 @@ class UserController extends Controller
                     ->get();
             }
 
+            // Get the latest topics
+
+            // Get the users permissions
+            GLOBAL $canAccess;
+            $canAccess = $user->getPermissions();
+
+            // Filter the canAccess array to get the list of forum IDs the user can access
+            $accessCollection = collect();
+            foreach($canAccess as $hasAccess) {
+                if (strpos($hasAccess, 'access-forum-') !== false) {
+                    $access = explode('-', $hasAccess);
+                    if($access[2]) {
+                        $accessCollection->push($access[2]);
+                    }
+                }
+            }
+
+            $latest_posts = Post::with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(7)->get();
+
+
 
 
 
@@ -94,6 +114,7 @@ class UserController extends Controller
             return view('user.dashboard')
                 ->withUser($user)
                 ->withMentionPosts($mention_posts)
+                ->withLatestPosts($latest_posts)
                 ->withJobList($job_list)
                 ->withGroupList($group_list)
                 ->withGroupArray($group_array)
@@ -105,7 +126,8 @@ class UserController extends Controller
             return view('user.dashboard')
                     ->withUser($user)
                     ->withJobList($job_list)
-                    ->withMentionPosts($mention_posts);
+                    ->withMentionPosts($mention_posts)
+                    ->withLatestPosts($latest_posts);
         }
     }
 

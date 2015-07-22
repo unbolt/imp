@@ -53,11 +53,11 @@ class ForumController extends Controller
             }
         }
 
+        $latestPosts = Post::topic()->with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(4)->get();
+
         // Get the online users
         $fiveMinutesAgo = Carbon::now()->subMinutes(5);
         $usersOnline = User::where('active_at', '>=', $fiveMinutesAgo)->orderBy('active_at', 'DESC')->get();
-
-        $latestPosts = Post::topic()->with('forum')->whereIn('forum_id', $accessCollection)->orderBy('created_at', 'DESC')->limit(4)->get();
 
         return view('forums.forum')->withForums($filteredForums)->withLatestPosts($latestPosts)->withOnlineUsers($usersOnline);
 

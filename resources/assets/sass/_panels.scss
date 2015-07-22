@@ -1,3 +1,28 @@
 .panel {
     border-radius: 0px;
 }
+
+.panel-heading {
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+.panel-dark {
+    border-color: $dark;
+
+    >.panel-heading {
+        color: $light;
+        background-color: $dark;
+        border-color: $dark;
+    }
+}
+
+.panel-highlight {
+    border-color: $highlight;
+
+    >.panel-heading {
+        color: $light;
+        background-color: $highlight;
+        border-color: $highlight;
+    }
+}
