@@ -88,10 +88,6 @@ class UserController extends Controller
                 ->limit(7)
                 ->get();
 
-                echo "<pre>";
-                print_r($latest_posts);
-                echo "</pre>";
-
 
         if($user->hasRole('administrators')) {
 
